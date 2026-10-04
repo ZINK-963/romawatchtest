@@ -1,0 +1,1135 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <script>
+      (function(){
+        try{
+          var t = localStorage.getItem('roma-theme');
+          document.documentElement.setAttribute('data-theme', t === 'dark' ? 'dark' : 'light');
+        }catch(e){
+          document.documentElement.setAttribute('data-theme','light');
+        }
+      })();
+    </script>
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Document</title>
+  </head>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    rel="stylesheet"
+  />
+  <link href="./style.css" rel="stylesheet" />
+  <link href="./products.css" rel="stylesheet" />
+  <link href="./products-theme.css" rel="stylesheet" />
+  <link href="./theme.css" rel="stylesheet" />
+  <body>
+    <div class="scroll-progress" id="scrollProgress"></div>
+    <div class="page-loader" id="pageLoader" aria-hidden="true">
+      <div class="hourglass-spin">
+        <svg class="hourglass-svg" viewBox="0 0 100 150" width="72" height="108">
+          <path class="hg-frame" d="M20 8 H80 M20 142 H80 M20 8 C20 40 50 55 50 75 C50 95 20 110 20 142 M80 8 C80 40 50 55 50 75 C50 95 80 110 80 142" />
+          <rect class="hg-cap" x="14" y="4" width="72" height="8" rx="3"></rect>
+          <rect class="hg-cap" x="14" y="138" width="72" height="8" rx="3"></rect>
+          <clipPath id="hgTopClip"><path d="M22 10 H78 C78 38 50 54 50 74 C50 54 22 38 22 10 Z"></path></clipPath>
+          <rect class="hg-sand-top" x="20" y="10" width="60" height="64" clip-path="url(#hgTopClip)"></rect>
+          <rect class="hg-stream" x="49" y="70" width="2" height="14"></rect>
+          <clipPath id="hgBottomClip"><path d="M50 76 C50 96 78 112 78 140 H22 C22 112 50 96 50 76 Z"></path></clipPath>
+          <rect class="hg-sand-bottom" x="20" y="76" width="60" height="64" clip-path="url(#hgBottomClip)"></rect>
+        </svg>
+      </div>
+      <p class="loader-label">در حال بارگذاری...</p>
+    </div>
+
+      <header class="header">
+      <!-- ROW 1 -->
+      <div class="top-bar tob-bar-products-page">
+        <button class="nav-toggle" id="navToggle" aria-label="باز کردن منو" aria-expanded="false"><span></span><span></span><span></span></button>
+        <div class="logo">
+          <h1>ROMA WATCH</h1>
+        </div>
+        <div class="actions">
+          <button class="icon-btn search-toggle" id="searchToggle" type="button" aria-label="جستجو" aria-expanded="false">
+            <i class="bi bi-search"></i>
+          </button>
+          <button class="icon-btn theme-toggle" id="themeToggle" type="button" aria-label="تغییر تم روشن و تاریک">
+            <i class="bi bi-moon-stars theme-icon-dark"></i>
+            <i class="bi bi-sun theme-icon-light"></i>
+          </button>
+          <a
+            class="track-btn"
+            href="./tracking.html"
+            style="text-decoration: none"
+            >رهگیری محصولات</a
+          >
+          <a href="./cart.html">
+            <div class="cart-wrapper">
+              <i class="bi bi-cart2"></i>
+              <span class="badge">0</span>
+            </div>
+          </a>
+          <span class="account-name" id="accountName" hidden></span>
+          <div class="login-wrapper">
+            <a class="login-link" href="./login.html">
+              <i class="bi bi-person-fill"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- ROW 2 -->
+      <div class="nav-scrim" id="navScrim"></div>
+      <nav class="nav" id="siteNav">
+        <div class="nav-account-panel" id="navAccountPanel">
+          <div class="nav-clock" id="navClock">--:--:--</div>
+          <div class="nav-account-name" id="navAccountName"></div>
+          <a class="nav-login-link" id="navLoginLink" href="./login.html"><i class="bi bi-person-fill"></i><span>ورود / عضویت</span></a>
+        </div>
+        <ul class="nav-list">
+          <li class="nav-favorites-item">
+            <a class="nav-item" href="./favorites.html"><i class="bi bi-heart"></i> محصولات مورد علاقه<span class="favorites-badge">0</span></a>
+          </li>
+          <li>
+            <a class="nav-item" href="./index.html"
+              ><i class="bi bi-house"></i> ساعت روما</a
+            >
+          </li>
+          <!-- MEGA MENU -->
+          <li class="dropdown-parent mega">
+            <a class="nav-item" href="./products.htm"
+              ><i class="bi bi-gem"></i> برندها</a
+            >
+            <div class="mega-dropdown">
+              <ul>
+                <li><a href="./products.htm?brand=%D8%A7%D8%AF%D9%85%D8%A7%D8%B1%D8%B3%20%D9%BE%DB%8C%DA%AF%D9%87">ادمارس پیگه</a></li>
+                <li><a href="./products.htm?brand=%D8%A7%D8%B3%D9%BE%D8%B1%DB%8C%D8%AA">اسپریت</a></li>
+                <li><a href="./products.htm?brand=%D8%A7%D9%84%DA%AF%D8%A7%D9%86%D8%B3">الگانس</a></li>
+                <li><a href="./products.htm?brand=%D8%A7%D9%88%D8%B1%DB%8C%D9%86%D8%AA%D8%A7%D9%84">اورینتال</a></li>
+                <li><a href="./products.htm?brand=%D8%A7%DA%AF%D9%86%D8%B1">اگنر</a></li>
+              </ul>
+              <ul>
+                <li><a href="./products.htm?brand=%D8%AF%D9%86%DB%8C%D9%84%20%D9%88%D9%84%DB%8C%D9%86%DA%AF%D8%AA%D9%88%D9%86">دنیل ولینگتون</a></li>
+                <li><a href="./products.htm?brand=%D8%B1%D9%88%D9%84%DA%A9%D8%B3">رولکس</a></li>
+                <li><a href="./products.htm?brand=%D8%B1%D9%88%D9%85%D8%A7%D9%86%D8%B3%D9%88%D9%86">رومانسون</a></li>
+                <li><a href="./products.htm?brand=%D8%B3%DB%8C%D8%AA%DB%8C%D8%B2%D9%86">سیتیزن</a></li>
+              </ul>
+              <ul>
+                <li><a href="./products.htm?brand=%D8%B3%DB%8C%DA%A9%D9%88">سیکو</a></li>
+                <li><a href="./products.htm?brand=%D9%84%D8%A7%DA%A9%D8%B3%D9%85%DB%8C">لاکسمی</a></li>
+                <li><a href="./products.htm?brand=%D9%85%DA%AF%DB%8C%D8%B1">مگیر</a></li>
+                <li><a href="./products.htm?brand=%D9%86%D8%A7%D9%88%DB%8C%20%D9%81%D9%88%D8%B1%D8%B3">ناوی فورس</a></li>
+              </ul>
+              <ul>
+                <li><a href="./products.htm?brand=%D9%88%D8%A7%D8%AA%D8%B3%D9%88%D9%86">واتسون</a></li>
+                <li><a href="./products.htm?brand=%D9%BE%D8%AA%DA%A9%20%D9%81%DB%8C%D9%84%DB%8C%D9%BE">پتک فیلیپ</a></li>
+                <li><a href="./products.htm?brand=%DA%A9%D8%A7%D8%B3%DB%8C%D9%88">کاسیو</a></li>
+                <li><a href="./products.htm?brand=%DA%A9%D8%B1%D8%B3%D8%AA">کرست</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a
+              class="nav-item"
+              href="./products.htm?gender=%D9%85%D8%B1%D8%AF%D8%A7%D9%86%D9%87"
+            >
+              <i class="bi bi-watch"></i> ساعت مردانه</a
+            >
+          </li>
+          <li>
+            <a
+              class="nav-item"
+              href="./products.htm?gender=%D8%B2%D9%86%D8%A7%D9%86%D9%87"
+              ><i class="bi bi-watch"></i> ساعت زنانه</a
+            >
+          </li>
+          <li>
+            <a class="nav-item" href="./products.htm?gender=%D8%B3%D8%AA"
+              ><i class="bi bi-smartwatch"></i> ساعت های ست</a
+            >
+          </li>
+          <li>
+            <a class="nav-item" href="./products.htm"
+              ><i class="bi bi-stars"></i>سایر محصولات</a
+            >
+          </li>
+          <li></li>
+          <li>
+            <!-- <a href="#"><i class="bi bi-box-arrow-in-right"></i> ورود </a> -->
+          </li>
+          <li>
+            <a class="nav-item" href="./about.html"
+              ><i class="bi bi-info-circle"></i> درباره ما</a
+            >
+          </li>
+        </ul>
+      </nav>
+
+      <div class="search-panel" id="searchPanel" role="search">
+        <div class="search-panel-inner">
+          <i class="bi bi-search"></i>
+          <input id="searchInput" type="text" placeholder="جستجوی ساعت..." />
+          <button class="search-close" id="searchClose" type="button" aria-label="بستن جستجو">
+            <i class="bi bi-x-lg"></i>
+          </button>
+        </div><div class="search-results-list" id="searchResultsList"></div>
+      </div>
+    </header>
+    <div class="all-products-container">
+      <div class="breadcrumb">
+        <a href="./index.html">صفحه اصلی</a><i class="bi bi-chevron-left"></i
+        ><span>فروشگاه</span>
+      </div>
+      <h1><i class="bi bi-cart"></i> فروشگاه</h1>
+      <div class="products-page">
+        <div class="filter-scrim" id="filterScrim"></div>
+        <aside class="filter-sidebar" id="filterSidebar">
+          <h2><i class="bi bi-sliders2"></i>فیلتر محصولات<button type="button" id="filterClose" class="filter-close" aria-label="بستن فیلترها"><i class="bi bi-x-lg"></i></button></h2>
+          <button id="resetFilters" type="button" class="reset-filters-btn"><i class="bi bi-arrow-counterclockwise"></i> حذف همه فیلترها</button>
+          <div class="filter-box" data-filter="gender">
+            <h3><i class="bi bi-circle-fill"></i>مناسب برای</h3>
+            <label for="gender-مردانه-0"
+              ><input
+                id="gender-مردانه-0"
+                name="gender"
+                type="checkbox"
+                value="مردانه"
+              />آقایان<span>(0)</span></label
+            >
+            <label for="gender-زنانه-1"
+              ><input
+                id="gender-زنانه-1"
+                name="gender"
+                type="checkbox"
+                value="زنانه"
+              />بانوان<span>(0)</span></label
+            >
+            <label for="gender-ست-2"
+              ><input
+                id="gender-ست-2"
+                name="gender"
+                type="checkbox"
+                value="ست"
+              />زوج (ست)<span>(0)</span></label
+            >
+          </div>
+          <div class="filter-box" data-filter="brand">
+            <h3><i class="bi bi-circle-fill"></i>برند</h3>
+            <input
+              id="search-brand"
+              name=""
+              placeholder="جستجوی برند"
+              type="text"
+            />
+            <label for="brand-navi-0"
+              ><input
+                id="brand-navi-0"
+                name="brand"
+                type="checkbox"
+                value="ناوی فورس"
+              />ناوی فورس<span>(0)</span></label
+            >
+            <label for="brand-watson-1"
+              ><input
+                id="brand-watson-1"
+                name="brand"
+                type="checkbox"
+                value="واتسون"
+              />واتسون<span>(0)</span></label
+            >
+            <label for="brand-megir-2"
+              ><input
+                id="brand-megir-2"
+                name="brand"
+                type="checkbox"
+                value="مگیر"
+              />مگیر<span>(0)</span></label
+            >
+            <label for="brand-patek-3"
+              ><input
+                id="brand-patek-3"
+                name="brand"
+                type="checkbox"
+                value="پتک فیلیپ"
+              />پتک فیلیپ<span>(0)</span></label
+            >
+            <label for="brand-ap-4"
+              ><input
+                id="brand-ap-4"
+                name="brand"
+                type="checkbox"
+                value="ادمارس پیگه"
+              />ادمارس پیگه<span>(0)</span></label
+            >
+            <label class="extra" for="brand-rolex-5"
+              ><input
+                id="brand-rolex-5"
+                name="brand"
+                type="checkbox"
+                value="رولکس"
+              />رولکس<span>(0)</span></label
+            >
+            <label class="extra" for="brand-dw-6"
+              ><input
+                id="brand-dw-6"
+                name="brand"
+                type="checkbox"
+                value="دنیل ولینگتون"
+              />دنیل ولینگتون<span>(0)</span></label
+            >
+            <label class="extra" for="brand-casio-7"
+              ><input
+                id="brand-casio-7"
+                name="brand"
+                type="checkbox"
+                value="کاسیو"
+              />کاسیو<span>(0)</span></label
+            >
+            <label class="extra" for="brand-oriental-8"
+              ><input
+                id="brand-oriental-8"
+                name="brand"
+                type="checkbox"
+                value="اورینتال"
+              />اورینتال<span>(0)</span></label
+            >
+            <label class="extra" for="brand-crest-9"
+              ><input
+                id="brand-crest-9"
+                name="brand"
+                type="checkbox"
+                value="کرست"
+              />کرست<span>(0)</span></label
+            >
+            <label class="extra" for="brand-laxmi-10"
+              ><input
+                id="brand-laxmi-10"
+                name="brand"
+                type="checkbox"
+                value="لاکسمی"
+              />لاکسمی<span>(0)</span></label
+            >
+            <label class="extra" for="brand-seiko-11"
+              ><input
+                id="brand-seiko-11"
+                name="brand"
+                type="checkbox"
+                value="سیکو"
+              />سیکو<span>(0)</span></label
+            >
+            <label class="extra" for="brand-esprit-12"
+              ><input
+                id="brand-esprit-12"
+                name="brand"
+                type="checkbox"
+                value="اسپریت"
+              />اسپریت<span>(0)</span></label
+            >
+            <label class="extra" for="brand-aigner-13"
+              ><input
+                id="brand-aigner-13"
+                name="brand"
+                type="checkbox"
+                value="اگنر"
+              />اگنر<span>(0)</span></label
+            >
+            <label class="extra" for="brand-romanson-14"
+              ><input
+                id="brand-romanson-14"
+                name="brand"
+                type="checkbox"
+                value="رومانسون"
+              />رومانسون<span>(0)</span></label
+            >
+            <label class="extra" for="brand-citizen-15"
+              ><input
+                id="brand-citizen-15"
+                name="brand"
+                type="checkbox"
+                value="سیتیزن"
+              />سیتیزن<span>(0)</span></label
+            >
+            <label class="extra" for="brand-elegance-16"
+              ><input
+                id="brand-elegance-16"
+                name="brand"
+                type="checkbox"
+                value="الگانس"
+              />الگانس<span>(0)</span></label
+            >
+            <label class="extra" for="brand-victor-17"
+              ><input
+                id="brand-victor-17"
+                name="brand"
+                type="checkbox"
+                value="ویکتور لورنتیس"
+              />ویکتور لورنتیس<span>(0)</span></label
+            >
+            <label class="extra" for="brand-danielcesar-18"
+              ><input
+                id="brand-danielcesar-18"
+                name="brand"
+                type="checkbox"
+                value="دنیل سزار"
+              />دنیل سزار<span>(0)</span></label
+            >
+            <label class="extra" for="brand-cartier-19"
+              ><input
+                id="brand-cartier-19"
+                name="brand"
+                type="checkbox"
+                value="کارتیه"
+              />کارتیه<span>(0)</span></label
+            >
+            <label class="extra" for="brand-ck-20"
+              ><input
+                id="brand-ck-20"
+                name="brand"
+                type="checkbox"
+                value="کلوین کلاین"
+              />کلوین کلاین<span>(0)</span></label
+            >
+            <label class="extra" for="brand-bestone-21"
+              ><input
+                id="brand-bestone-21"
+                name="brand"
+                type="checkbox"
+                value="بست وین"
+              />بست وین<span>(0)</span></label
+            >
+            <label class="extra" for="brand-versace-22"
+              ><input
+                id="brand-versace-22"
+                name="brand"
+                type="checkbox"
+                value="ورساچه"
+              />ورساچه<span>(0)</span></label
+            >
+            <button class="show-more" type="button">
+              برندهای بیشتر
+              <i class="bi bi-chevron-down"></i>
+            </button>
+          </div>
+          <div class="filter-box" data-filter="displayColor">
+            <h3><i class="bi bi-circle-fill"></i>رنگ صفحه</h3>
+            <label class="" for="displayColor-blue-0"
+              ><input
+                id="displayColor-blue-0"
+                name="displayColor"
+                type="checkbox"
+                value="blue"
+              />آبی<span>(0)</span></label
+            >
+            <label class="" for="displayColor-green-1"
+              ><input
+                id="displayColor-green-1"
+                name="displayColor"
+                type="checkbox"
+                value="green"
+              />سبز<span>(0)</span></label
+            >
+            <label class="" for="displayColor-brown-2"
+              ><input
+                id="displayColor-brown-2"
+                name="displayColor"
+                type="checkbox"
+                value="brown"
+              />قهوه ای<span>(0)</span></label
+            >
+            <label class="" for="displayColor-black-3"
+              ><input
+                id="displayColor-black-3"
+                name="displayColor"
+                type="checkbox"
+                value="black"
+              />مشکی<span>(0)</span></label
+            >
+            <label class="" for="displayColor-white-4"
+              ><input
+                id="displayColor-white-4"
+                name="displayColor"
+                type="checkbox"
+                value="white"
+              />سفید<span>(0)</span></label
+            >
+            <label class="extra" for="displayColor-red-5"
+              ><input
+                id="displayColor-red-5"
+                name="displayColor"
+                type="checkbox"
+                value="red"
+              />قرمز<span>(0)</span></label
+            >
+            <label class="extra" for="displayColor-darkRed-6"
+              ><input
+                id="displayColor-darkRed-6"
+                name="displayColor"
+                type="checkbox"
+                value="darkRed"
+              />قرمز تیره<span>(0)</span></label
+            >
+            <label class="extra" for="displayColor-gold-7"
+              ><input
+                id="displayColor-gold-7"
+                name="displayColor"
+                type="checkbox"
+                value="gold"
+              />طلایی<span>(0)</span></label
+            >
+            <label class="extra" for="displayColor-silver-8"
+              ><input
+                id="displayColor-silver-8"
+                name="displayColor"
+                type="checkbox"
+                value="silver"
+              />نقره ای<span>(0)</span></label
+            >
+            <label class="extra" for="displayColor-copper-9"
+              ><input
+                id="displayColor-copper-9"
+                name="displayColor"
+                type="checkbox"
+                value="copper"
+              />مسی<span>(0)</span></label
+            >
+            <label class="extra" for="displayColor-turquoise-10"
+              ><input
+                id="displayColor-turquoise-10"
+                name="displayColor"
+                type="checkbox"
+                value="turquoise"
+              />فیروزه ای<span>(0)</span></label
+            >
+            <label class="extra" for="displayColor-purple-11"
+              ><input
+                id="displayColor-purple-11"
+                name="displayColor"
+                type="checkbox"
+                value="purple"
+              />بنفش<span>(0)</span></label
+            >
+            <label class="extra" for="displayColor-pink-13"
+              ><input
+                id="displayColor-pink-13"
+                name="displayColor"
+                type="checkbox"
+                value="pink"
+              />صورتی<span>(0)</span></label
+            >
+            <label class="extra" for="displayColor-gray-14"
+              ><input
+                id="displayColor-gray-14"
+                name="displayColor"
+                type="checkbox"
+                value="gray"
+              />طوسی<span>(0)</span></label
+            >
+            <label class="extra" for="displayColor-rose-gold-15"
+              ><input
+                id="displayColor-rose-gold-15"
+                name="displayColor"
+                type="checkbox"
+                value="rose-gold"
+              />رزگلد<span>(0)</span></label
+            >
+            <label class="extra" for="displayColor-navy-16"
+              ><input
+                id="displayColor-navy-16"
+                name="displayColor"
+                type="checkbox"
+                value="navy"
+              />سرمه‌ای<span>(0)</span></label
+            >
+            <label class="extra" for="displayColor-other-12"
+              ><input
+                id="displayColor-other-12"
+                name="displayColor"
+                type="checkbox"
+                value="other"
+              />رنگ های دیگر<span>(0)</span></label
+            >
+            <button class="show-more" type="button">
+              رنگ های بیشتر
+              <i class="bi bi-chevron-down"></i>
+            </button>
+          </div>
+          <div class="filter-box" data-filter="bodyColor">
+            <h3><i class="bi bi-circle-fill"></i>رنگ بدنه</h3>
+            <label class="" for="bodyColor-silver-0"
+              ><input
+                id="bodyColor-silver-0"
+                name="bodyColor"
+                type="checkbox"
+                value="silver"
+              />نقره ای<span>(0)</span></label
+            >
+            <label class="" for="bodyColor-black-1"
+              ><input
+                id="bodyColor-black-1"
+                name="bodyColor"
+                type="checkbox"
+                value="black"
+              />مشکی<span>(0)</span></label
+            >
+            <label class="" for="bodyColor-gold-2"
+              ><input
+                id="bodyColor-gold-2"
+                name="bodyColor"
+                type="checkbox"
+                value="gold"
+              />طلایی<span>(0)</span></label
+            >
+            <label class="" for="bodyColor-rose-gold-3"
+              ><input
+                id="bodyColor-rose-gold-3"
+                name="bodyColor"
+                type="checkbox"
+                value="rose-gold"
+              />رزگلد<span>(0)</span></label
+            >
+            <label class="" for="bodyColor-gray-4"
+              ><input
+                id="bodyColor-gray-4"
+                name="bodyColor"
+                type="checkbox"
+                value="gray"
+              />دودی<span>(0)</span></label
+            >
+            <label class="extra" for="bodyColor-titanium-5"
+              ><input
+                id="bodyColor-titanium-5"
+                name="bodyColor"
+                type="checkbox"
+                value="titanium"
+              />تیتانیومی<span>(0)</span></label
+            >
+            <label class="extra" for="bodyColor-two-tone-6"
+              ><input
+                id="bodyColor-two-tone-6"
+                name="bodyColor"
+                type="checkbox"
+                value="two-tone"
+              />دو رنگ<span>(0)</span></label
+            >
+            <label class="extra" for="bodyColor-brown-8"
+              ><input
+                id="bodyColor-brown-8"
+                name="bodyColor"
+                type="checkbox"
+                value="brown"
+              />قهوه ای<span>(0)</span></label
+            >
+            <label class="extra" for="bodyColor-navy-9"
+              ><input
+                id="bodyColor-navy-9"
+                name="bodyColor"
+                type="checkbox"
+                value="navy"
+              />سرمه ای<span>(0)</span></label
+            >
+            <label class="extra" for="bodyColor-bronze-7"
+              ><input
+                id="bodyColor-bronze-7"
+                name="bodyColor"
+                type="checkbox"
+                value="bronze"
+              />برنز<span>(0)</span></label
+            >
+            <button class="show-more" type="button">
+              رنگ های بیشتر
+              <i class="bi bi-chevron-down"></i>
+            </button>
+          </div>
+          <div class="filter-box" data-filter="material">
+            <h3><i class="bi bi-circle-fill"></i>جنس بند</h3>
+            <label class="" for="material-استیل-0"
+              ><input
+                id="material-استیل-0"
+                name="material"
+                type="checkbox"
+                value="استیل"
+              />استیل<span>(0)</span></label
+            >
+            <label class="" for="material-چرم-طبیعی-1"
+              ><input
+                id="material-چرم-طبیعی-1"
+                name="material"
+                type="checkbox"
+                value="چرم طبیعی"
+              />چرم طبیعی<span>(0)</span></label
+            >
+            <label class="" for="material-چرم-مصنوعی-2"
+              ><input
+                id="material-چرم-مصنوعی-2"
+                name="material"
+                type="checkbox"
+                value="چرم مصنوعی"
+              />چرم مصنوعی<span>(0)</span></label
+            >
+            <label class="" for="material-سیلیکونی-3"
+              ><input
+                id="material-سیلیکونی-3"
+                name="material"
+                type="checkbox"
+                value="سیلیکونی"
+              />سیلیکونی<span>(0)</span></label
+            >
+            <label class="" for="material-رابر-4"
+              ><input
+                id="material-رابر-4"
+                name="material"
+                type="checkbox"
+                value="رابر"
+              />رابر<span>(0)</span></label
+            >
+            <label class="extra" for="material-پارچه-ای-5"
+              ><input
+                id="material-پارچه-ای-5"
+                name="material"
+                type="checkbox"
+                value="پارچه ای"
+              />پارچه ای<span>(0)</span></label
+            >
+            <label class="extra" for="material-برزنتی-6"
+              ><input
+                id="material-برزنتی-6"
+                name="material"
+                type="checkbox"
+                value="برزنتی"
+              />برزنتی<span>(0)</span></label
+            >
+            <label class="extra" for="material-سرامیکی-7"
+              ><input
+                id="material-سرامیکی-7"
+                name="material"
+                type="checkbox"
+                value="سرامیکی"
+              />سرامیکی<span>(0)</span></label
+            >
+            <label class="extra" for="material-تیتانیومی-8"
+              ><input
+                id="material-تیتانیومی-8"
+                name="material"
+                type="checkbox"
+                value="تیتانیومی"
+              />تیتانیومی<span>(0)</span></label
+            >
+            <label class="extra" for="material-رزینی-9"
+              ><input
+                id="material-رزینی-9"
+                name="material"
+                type="checkbox"
+                value="رزینی"
+              />رزینی<span>(0)</span></label
+            >
+            <button class="show-more" type="button">
+              مشاهده بیشتر
+              <i class="bi bi-chevron-down"></i>
+            </button>
+          </div>
+          <div class="filter-box" data-filter="motorType">
+            <h3><i class="bi bi-circle-fill"></i>نوع موتور</h3>
+            <label class="" for="motorType-quartz-0"
+              ><input
+                id="motorType-quartz-0"
+                name="motorType"
+                type="checkbox"
+                value="quartz"
+              />کوارتز<span>(0)</span></label
+            >
+            <label class="" for="motorType-automatic-1"
+              ><input
+                id="motorType-automatic-1"
+                name="motorType"
+                type="checkbox"
+                value="automatic"
+              />اتوماتیک<span>(0)</span></label
+            >
+            <label class="" for="motorType-mechanical-2"
+              ><input
+                id="motorType-mechanical-2"
+                name="motorType"
+                type="checkbox"
+                value="mechanical"
+              />مکانیکی<span>(0)</span></label
+            >
+            <label class="" for="motorType-solar-3"
+              ><input
+                id="motorType-solar-3"
+                name="motorType"
+                type="checkbox"
+                value="solar"
+              />سولار<span>(0)</span></label
+            >
+            <label class="" for="motorType-digital-4"
+              ><input
+                id="motorType-digital-4"
+                name="motorType"
+                type="checkbox"
+                value="digital"
+              />دیجیتال<span>(0)</span></label
+            >
+            <label class="extra" for="motorType-analog-5"
+              ><input
+                id="motorType-analog-5"
+                name="motorType"
+                type="checkbox"
+                value="analog"
+              />آنالوگ<span>(0)</span></label
+            >
+            <label class="extra" for="motorType-analog-digital-6"
+              ><input
+                id="motorType-analog-digital-6"
+                name="motorType"
+                type="checkbox"
+                value="analog-digital"
+              />آنالوگ-دیجیتال<span>(0)</span></label
+            >
+            <label class="extra" for="motorType-Eco-Drive-7"
+              ><input
+                id="motorType-Eco-Drive-7"
+                name="motorType"
+                type="checkbox"
+                value="Eco-Drive"
+              />Eco-Drive<span>(0)</span></label
+            >
+            <label class="extra" for="motorType-Kinetic-8"
+              ><input
+                id="motorType-Kinetic-8"
+                name="motorType"
+                type="checkbox"
+                value="Kinetic"
+              />Kinetic<span>(0)</span></label
+            >
+            <button class="show-more" type="button">
+              مشاهده بیشتر
+              <i class="bi bi-chevron-down"></i>
+            </button>
+          </div>
+          <div class="filter-box" data-filter="style">
+            <h3><i class="bi bi-circle-fill"></i>سبک ساعت</h3>
+            <label class="" for="style-کلاسیک-0"
+              ><input
+                id="style-کلاسیک-0"
+                name="style"
+                type="checkbox"
+                value="کلاسیک"
+              />کلاسیک<span>(0)</span></label
+            >
+            <label class="" for="style-اسپرت-1"
+              ><input
+                id="style-اسپرت-1"
+                name="style"
+                type="checkbox"
+                value="اسپرت"
+              />اسپرت<span>(0)</span></label
+            >
+            <label class="" for="style-لوکس-2"
+              ><input
+                id="style-لوکس-2"
+                name="style"
+                type="checkbox"
+                value="لوکس"
+              />لوکس<span>(0)</span></label
+            >
+            <label class="" for="style-کژوال-3"
+              ><input
+                id="style-کژوال-3"
+                name="style"
+                type="checkbox"
+                value="کژوال"
+              />کژوال<span>(0)</span></label
+            >
+            <label class="" for="style-رسمی-4"
+              ><input
+                id="style-رسمی-4"
+                name="style"
+                type="checkbox"
+                value="رسمی"
+              />رسمی<span>(0)</span></label
+            >
+            <label class="extra" for="style-فشن-5"
+              ><input
+                id="style-فشن-5"
+                name="style"
+                type="checkbox"
+                value="فشن"
+              />فشن<span>(0)</span></label
+            >
+            <label class="extra" for="style-غواصی-6"
+              ><input
+                id="style-غواصی-6"
+                name="style"
+                type="checkbox"
+                value="غواصی"
+              />غواصی<span>(0)</span></label
+            >
+            <label class="extra" for="style-خلبانی-7"
+              ><input
+                id="style-خلبانی-7"
+                name="style"
+                type="checkbox"
+                value="خلبانی"
+              />خلبانی<span>(0)</span></label
+            >
+            <label class="extra" for="style-نظامی-8"
+              ><input
+                id="style-نظامی-8"
+                name="style"
+                type="checkbox"
+                value="نظامی"
+              />نظامی<span>(0)</span></label
+            >
+            <label class="extra" for="style-هوشمند-9"
+              ><input
+                id="style-هوشمند-9"
+                name="style"
+                type="checkbox"
+                value="هوشمند"
+              />هوشمند<span>(0)</span></label
+            >
+            <button class="show-more" type="button">
+              سبک های بیشتر
+              <i class="bi bi-chevron-down"></i>
+            </button>
+          </div>
+          <div class="filter-box" data-filter="options">
+            <h3><i class="bi bi-circle-fill"></i>امکانات</h3>
+            <label class="" for="options-ضد-آب-0"
+              ><input
+                id="options-ضد-آب-0"
+                name="options"
+                type="checkbox"
+                value="ضد آب"
+              />ضد آب<span>(0)</span></label
+            >
+            <label class="" for="options-کرنوگراف-1"
+              ><input
+                id="options-کرنوگراف-1"
+                name="options"
+                type="checkbox"
+                value="کرنوگراف"
+              />کرنوگراف<span>(0)</span></label
+            >
+            <label class="" for="options-تقویم-2"
+              ><input
+                id="options-تقویم-2"
+                name="options"
+                type="checkbox"
+                value="تقویم"
+              />تقویم<span>(0)</span></label
+            >
+            <label class="" for="options-شب-نما-3"
+              ><input
+                id="options-شب-نما-3"
+                name="options"
+                type="checkbox"
+                value="شب نما"
+              />شب نما<span>(0)</span></label
+            >
+            <label class="" for="options-تایمر-4"
+              ><input
+                id="options-تایمر-4"
+                name="options"
+                type="checkbox"
+                value="تایمر"
+              />تایمر<span>(0)</span></label
+            >
+            <label class="extra" for="options-قطب-نما-5"
+              ><input
+                id="options-قطب-نما-5"
+                name="options"
+                type="checkbox"
+                value="قطب نما"
+              />قطب نما<span>(0)</span></label
+            >
+            <label class="extra" for="options-شارژ-خورشیدی-6"
+              ><input
+                id="options-شارژ-خورشیدی-6"
+                name="options"
+                type="checkbox"
+                value="شارژ خورشیدی"
+              />شارژ خورشیدی<span>(0)</span></label
+            >
+            <label class="extra" for="options-نمایش-روز-هفته-7"
+              ><input
+                id="options-نمایش-روز-هفته-7"
+                name="options"
+                type="checkbox"
+                value="نمایش روز هفته"
+              />نمایش روز هفته<span>(0)</span></label
+            >
+            <label class="extra" for="options-قفل-پروانه-ای-8"
+              ><input
+                id="options-قفل-پروانه-ای-8"
+                name="options"
+                type="checkbox"
+                value="قفل پروانه ای"
+              />قفل پروانه ای<span>(0)</span></label
+            >
+            <label class="extra" for="options-قفل-کلیپسی-9"
+              ><input
+                id="options-قفل-کلیپسی-9"
+                name="options"
+                type="checkbox"
+                value="قفل کلیپسی"
+              />قفل کلیپسی<span>(0)</span></label
+            >
+            <button class="show-more" type="button">
+              امکانات بیشتر
+              <i class="bi bi-chevron-down"></i>
+            </button>
+          </div>
+          <div class="filter-box" data-filter="country">
+            <h3><i class="bi bi-circle-fill"></i>کشور سازنده</h3>
+            <label for="country-سوئیس-0"
+              ><input
+                id="country-سوئیس-0"
+                name="country"
+                type="checkbox"
+                value="سوئیس"
+              />سويیس<span>(0)</span></label
+            >
+            <label for="country-ژاپن-1"
+              ><input
+                id="country-ژاپن-1"
+                name="country"
+                type="checkbox"
+                value="ژاپن"
+              />ژاپن<span>(0)</span></label
+            >
+            <label for="country-آمریکا-2"
+              ><input
+                id="country-آمریکا-2"
+                name="country"
+                type="checkbox"
+                value="آمریکا"
+              />آمریکا<span>(0)</span></label
+            >
+            <label for="country-آلمان-3"
+              ><input
+                id="country-آلمان-3"
+                name="country"
+                type="checkbox"
+                value="آلمان"
+              />آلمان<span>(0)</span></label
+            >
+            <label for="country-فرانسه-4"
+              ><input
+                id="country-فرانسه-4"
+                name="country"
+                type="checkbox"
+                value="فرانسه"
+              />فرانسه<span>(0)</span></label
+            >
+            <label for="country-ایتالیا-5"
+              ><input
+                id="country-ایتالیا-5"
+                name="country"
+                type="checkbox"
+                value="ایتالیا"
+              />ایتالیا<span>(0)</span></label
+            >
+            <label for="country-چین-6"
+              ><input
+                id="country-چین-6"
+                name="country"
+                type="checkbox"
+                value="چین"
+              />چین<span>(0)</span></label
+            >
+            <label for="country-ALL-7"
+              ><input
+                id="country-ALL-7"
+                name="country"
+                type="checkbox"
+                value="ALL"
+              />همه کشور ها<span>(0)</span></label
+            >
+          </div>
+        </aside>
+        <div class="products">
+          <div class="products-toolbar">
+            <button type="button" id="filterToggle" class="filter-toggle-btn"><i class="bi bi-sliders2"></i> فیلترها</button>
+            <div class="product-count" id="productCount">
+              در حال نمایش محصولات...
+            </div>
+            <select id="sortSelect" class="sort-select">
+              <option value="asc">ارزان‌ترین</option>
+              <option value="desc">گران‌ترین</option>
+            </select>
+          </div>
+          <div class="products-grid" id="productsContainer"></div>
+          <div class="pagination-controls" id="paginationControls"></div>
+        </div>
+      </div>
+      <footer>
+        <div class="shop-address"></div>
+        <div class="cols-container">
+          <div class="col col-1">
+            <h3>خرید و همکاری</h3>
+            <ul>
+              <li><a href="./cart.html">روش های ارسال و رهگیری</a></li>
+              <li><a href="./products.htm">چگونه ثبت سفارش کنم</a></li>
+              <li><a href="./products.htm">سفارش کی به دستم میرسد</a></li>
+              <li>
+                <a href="./products.htm">چگونه از اصالت کالا مطمین شوم</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col col-2">
+            <h3>خدمات روما</h3>
+            <ul>
+              <li><a href="./cart.html">ارسال یک روزه برای ایلام</a></li>
+              <li><a href="./cart.html">ارسال دو تا شش روزه در کل کشور</a></li>
+              <li><a href="./products.htm">هفت روز ضمانت برگشت کالا</a></li>
+              <li><a href="./products.htm">خرید اقساطی از روما</a></li>
+              <li><a href="./products.htm">خدمات پس از فروش</a></li>
+            </ul>
+          </div>
+        <div class="col col-3">
+          <h3>پرفروش‌ترین برندها</h3>
+          <ul>
+            <li><a href="./products.htm?brand=%D9%86%D8%A7%D9%88%DB%8C%20%D9%81%D9%88%D8%B1%D8%B3">ناوی فورس</a></li>
+            <li><a href="./products.htm?brand=%D9%BE%D8%AA%DA%A9%20%D9%81%DB%8C%D9%84%DB%8C%D9%BE">پتک فیلیپ</a></li>
+            <li><a href="./products.htm?brand=%D8%B1%D9%88%D9%84%DA%A9%D8%B3">رولکس</a></li>
+            <li><a href="./products.htm?brand=%D8%A7%D8%AF%D9%85%D8%A7%D8%B1%D8%B3%20%D9%BE%DB%8C%DA%AF%D9%87">ادمارس پیگه</a></li>
+            <li><a href="./products.htm?brand=%D9%88%D8%A7%D8%AA%D8%B3%D9%88%D9%86">واتسون</a></li>
+          </ul>
+        </div>
+        <div class="col col-4">
+          <h3>ترتیب و دسته‌بندی قیمت</h3>
+          <ul>
+            <li><a href="./products.htm?sort=asc">ارزان‌ترین به گران‌ترین</a></li>
+            <li><a href="./products.htm?sort=desc">گران‌ترین به ارزان‌ترین</a></li>
+            <li><a href="./products.htm?gender=%D8%B3%D8%AA">ساعت‌های ست</a></li>
+            <li><a href="./products.htm?style=%D9%84%D9%88%DA%A9%D8%B3">ساعت‌های لوکس</a></li>
+            <li><a href="./products.htm?style=%DA%A9%D9%84%D8%A7%D8%B3%DB%8C%DA%A9">ساعت‌های کلاسیک</a></li>
+          </ul>
+        </div>
+          <div class="col col-5">
+            <div class="logo">roma watch</div>
+            <div class="medias-icon">
+              <i class="bi bi-instagram"></i>
+              <i class="bi bi-telegram"></i>
+            </div>
+          </div>
+        </div>
+        <div class="developer-address">
+          <p>طراحی شده و توسعه یافته توسط تیم طراحی ZINK DEVELOPERS</p>
+          <div class="link-to-developer">
+            <a href="./products.htm">
+              <i class="bi bi-instagram"></i>
+              <p>instagram</p>
+            </a>
+          </div>
+        </div>
+      </footer>
+      <script src="./api.js"></script>
+      <script src="./products-data.js"></script>
+      <script src="./script.js"></script>
+      <script src="./ui.js"></script><script src="./search.js"></script><script src="./theme.js"></script>
+      <script src="./products-ui.js"></script>
+    </div>
+  </body>
+</html>

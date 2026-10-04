@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="fa">
+  <head>
+    <meta charset="utf-8" />
+    <script>
+      (function(){
+        try{
+          var t = localStorage.getItem('roma-theme');
+          document.documentElement.setAttribute('data-theme', t === 'dark' ? 'dark' : 'light');
+        }catch(e){
+          document.documentElement.setAttribute('data-theme','light');
+        }
+      })();
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ROMA WATCH | فروشگاه تخصصی ساعت مچی اصل</title>
+    <meta
+      name="description"
+      content="ROMA WATCH، مرجع خرید ساعت مچی مردانه و زنانه با ضمانت اصالت کالا، از برندهای اقتصادی تا لوکس‌ترین برندهای دنیا؛ ارسال سریع و پشتیبانی ۲۴ ساعته."
+    />
+    <meta name="theme-color" content="#f2ead9" />
+    <link rel="canonical" href="./index.html" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="ROMA WATCH" />
+    <meta property="og:title" content="ROMA WATCH | فروشگاه تخصصی ساعت مچی اصل" />
+    <meta
+      property="og:description"
+      content="از اقتصادی‌ترین تا لوکس‌ترین ساعت‌های مچی دنیا، با ضمانت اصالت کالا."
+    />
+    <meta property="og:image" content="./images/hero-banner-1.png" />
+    <meta property="og:locale" content="fa_IR" />
+
+    <!-- Structured data for SEO -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Store",
+        "name": "ROMA WATCH",
+        "description": "فروشگاه تخصصی ساعت مچی مردانه و زنانه با ضمانت اصالت کالا",
+        "url": "./index.html",
+        "image": "./images/hero-banner-1.png"
+      }
+    </script>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="preload" as="font" href="./vazir-font-v16.1.0/Vazir.woff2" type="font/woff2" crossorigin />
+    <link href="./style.css" rel="stylesheet" />
+      <link rel="stylesheet" href="./theme.css" />
+  </head>
+  <body>
+    <div class="scroll-progress" id="scrollProgress"></div>
+    <div class="page-loader" id="pageLoader" aria-hidden="true">
+      <div class="hourglass-spin">
+        <svg class="hourglass-svg" viewBox="0 0 100 150" width="72" height="108">
+          <path class="hg-frame" d="M20 8 H80 M20 142 H80 M20 8 C20 40 50 55 50 75 C50 95 20 110 20 142 M80 8 C80 40 50 55 50 75 C50 95 80 110 80 142" />
+          <rect class="hg-cap" x="14" y="4" width="72" height="8" rx="3"></rect>
+          <rect class="hg-cap" x="14" y="138" width="72" height="8" rx="3"></rect>
+          <clipPath id="hgTopClip"><path d="M22 10 H78 C78 38 50 54 50 74 C50 54 22 38 22 10 Z"></path></clipPath>
+          <rect class="hg-sand-top" x="20" y="10" width="60" height="64" clip-path="url(#hgTopClip)"></rect>
+          <rect class="hg-stream" x="49" y="70" width="2" height="14"></rect>
+          <clipPath id="hgBottomClip"><path d="M50 76 C50 96 78 112 78 140 H22 C22 112 50 96 50 76 Z"></path></clipPath>
+          <rect class="hg-sand-bottom" x="20" y="76" width="60" height="64" clip-path="url(#hgBottomClip)"></rect>
+        </svg>
+      </div>
+      <p class="loader-label">در حال بارگذاری...</p>
+    </div>
+
+
+    <header class="header">
+      <!-- ROW 1 -->
+      <div class="top-bar">
+        <button class="nav-toggle" id="navToggle" aria-label="باز کردن منو" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
+        <div class="logo">
+          <h1>ROMA WATCH</h1>
+        </div>
+
+        <div class="actions">
+          <button class="icon-btn search-toggle" id="searchToggle" type="button" aria-label="جستجو" aria-expanded="false">
+            <i class="bi bi-search"></i>
+          </button>
+          <button class="icon-btn theme-toggle" id="themeToggle" type="button" aria-label="تغییر تم روشن و تاریک">
+            <i class="bi bi-moon-stars theme-icon-dark"></i>
+            <i class="bi bi-sun theme-icon-light"></i>
+          </button>
+          <a class="track-btn" href="./tracking.html">رهگیری محصولات</a>
+          <a href="./cart.html">
+            <div class="cart-wrapper">
+              <i class="bi bi-cart2"></i>
+              <span class="badge">0</span>
+            </div>
+          </a>
+          <span class="account-name" id="accountName" hidden></span>
+          <div class="login-wrapper">
+            <a class="login-link" href="./login.html">
+              <i class="bi bi-person-fill"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ROW 2 -->
+      <div class="nav-scrim" id="navScrim"></div>
+      <nav class="nav" id="siteNav">
+        <div class="nav-account-panel" id="navAccountPanel">
+          <div class="nav-clock" id="navClock">--:--:--</div>
+          <div class="nav-account-name" id="navAccountName"></div>
+          <a class="nav-login-link" id="navLoginLink" href="./login.html"><i class="bi bi-person-fill"></i><span>ورود / عضویت</span></a>
+        </div>
+        <ul class="nav-list">
+          <li>
+            <a class="nav-item" href="./index.html"><i class="bi bi-house"></i> ساعت روما</a>
+          </li>
+          <li class="nav-favorites-item">
+            <a class="nav-item" href="./favorites.html"><i class="bi bi-heart"></i> محصولات مورد علاقه<span class="favorites-badge">0</span></a>
+          </li>
+          <li class="dropdown-parent mega">
+            <a class="nav-item" href="./products.htm">
+              <i class="bi bi-gem"></i> برندها
+              <i class="bi bi-chevron-down" style="font-size:.65rem;margin-right:2px;"></i>
+            </a>
+            <div class="mega-dropdown">
+              <ul>
+                <li><a href="./products.htm?brand=%D8%A7%D8%AF%D9%85%D8%A7%D8%B1%D8%B3%20%D9%BE%DB%8C%DA%AF%D9%87">ادمارس پیگه</a></li>
+                <li><a href="./products.htm?brand=%D8%A7%D8%B3%D9%BE%D8%B1%DB%8C%D8%AA">اسپریت</a></li>
+                <li><a href="./products.htm?brand=%D8%A7%D9%84%DA%AF%D8%A7%D9%86%D8%B3">الگانس</a></li>
+                <li><a href="./products.htm?brand=%D8%A7%D9%88%D8%B1%DB%8C%D9%86%D8%AA%D8%A7%D9%84">اورینتال</a></li>
+                <li><a href="./products.htm?brand=%D8%A7%DA%AF%D9%86%D8%B1">اگنر</a></li>
+              </ul>
+              <ul>
+                <li><a href="./products.htm?brand=%D8%AF%D9%86%DB%8C%D9%84%20%D9%88%D9%84%DB%8C%D9%86%DA%AF%D8%AA%D9%88%D9%86">دنیل ولینگتون</a></li>
+                <li><a href="./products.htm?brand=%D8%B1%D9%88%D9%84%DA%A9%D8%B3">رولکس</a></li>
+                <li><a href="./products.htm?brand=%D8%B1%D9%88%D9%85%D8%A7%D9%86%D8%B3%D9%88%D9%86">رومانسون</a></li>
+                <li><a href="./products.htm?brand=%D8%B3%DB%8C%D8%AA%DB%8C%D8%B2%D9%86">سیتیزن</a></li>
+              </ul>
+              <ul>
+                <li><a href="./products.htm?brand=%D8%B3%DB%8C%DA%A9%D9%88">سیکو</a></li>
+                <li><a href="./products.htm?brand=%D9%84%D8%A7%DA%A9%D8%B3%D9%85%DB%8C">لاکسمی</a></li>
+                <li><a href="./products.htm?brand=%D9%85%DA%AF%DB%8C%D8%B1">مگیر</a></li>
+                <li><a href="./products.htm?brand=%D9%86%D8%A7%D9%88%DB%8C%20%D9%81%D9%88%D8%B1%D8%B3">ناوی فورس</a></li>
+              </ul>
+              <ul>
+                <li><a href="./products.htm?brand=%D9%88%D8%A7%D8%AA%D8%B3%D9%88%D9%86">واتسون</a></li>
+                <li><a href="./products.htm?brand=%D9%BE%D8%AA%DA%A9%20%D9%81%DB%8C%D9%84%DB%8C%D9%BE">پتک فیلیپ</a></li>
+                <li><a href="./products.htm?brand=%DA%A9%D8%A7%D8%B3%DB%8C%D9%88">کاسیو</a></li>
+                <li><a href="./products.htm?brand=%DA%A9%D8%B1%D8%B3%D8%AA">کرست</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a class="nav-item" href="./products.htm?gender=%D9%85%D8%B1%D8%AF%D8%A7%D9%86%D9%87">
+              <i class="bi bi-watch"></i> ساعت مردانه</a>
+          </li>
+          <li>
+            <a class="nav-item" href="./products.htm?gender=%D8%B2%D9%86%D8%A7%D9%86%D9%87">
+              <i class="bi bi-watch"></i> ساعت زنانه</a>
+          </li>
+          <li>
+            <a class="nav-item" href="./products.htm?gender=%D8%B3%D8%AA">
+              <i class="bi bi-smartwatch"></i> ساعت های ست</a>
+          </li>
+          <li>
+            <a class="nav-item" href="./products.htm"><i class="bi bi-stars"></i> سایر محصولات</a>
+          </li>
+          <li>
+            <a class="nav-item" href="./about.html"><i class="bi bi-info-circle"></i> درباره ما</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="search-panel" id="searchPanel" role="search">
+        <div class="search-panel-inner">
+          <i class="bi bi-search"></i>
+          <input id="searchInput" type="text" placeholder="جستجوی ساعت، برند یا مدل..." autocomplete="off" />
+          <button class="search-close" id="searchClose" type="button" aria-label="بستن جستجو">
+            <i class="bi bi-x-lg"></i>
+          </button>
+        </div>
+        <div class="search-results-list" id="searchResultsList"></div>
+      </div>
+    </header>
+
+    <!-- ============== HERO SLIDER ============== -->
+    <section class="hero" id="hero">
+      <div class="hero-brand-mark">
+        <div class="bezel"></div>
+        <span>ROMA · WATCH · EST</span>
+      </div>
+
+      <div class="hero-track">
+        <div class="hero-slide active" data-slide="0">
+          <img src="./images/hero-banner-1.png" alt="کالکشن جدید ساعت‌های ROMA WATCH" />
+          <div class="hero-content">
+            <p class="eyebrow">کالکشن جدید غرب کشور</p>
+            <h1>از اقتصادی‌ترین <em>تا لوکس‌ترین</em><br />زمان‌سنج‌های دنیا</h1>
+            <p>
+              مجموعه‌ای از بهترین برندهای ساعت مچی مردانه و زنانه، با ضمانت اصالت کالا
+              و قیمتی که رقابتش سخته.
+            </p>
+            <div class="hero-btns">
+              <a class="btn-glass solid" href="./products.htm"><i class="bi bi-bag-check"></i> مشاهده محصولات</a>
+              <a class="btn-glass" href="./products.htm"><i class="bi bi-gem"></i> مشاهده برند‌ها</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-slide" data-slide="1">
+          <img src="./images/omega-ad.png" alt="کالکشن امگا در ROMA WATCH" />
+          <div class="hero-content">
+            <p class="eyebrow">امگا · دقت بی‌پایان</p>
+            <h1>نماد <em>اصالت</em> و<br />شکوهی ماندگار</h1>
+            <p>
+              جدیدترین و خاص‌ترین مدل‌های امگا را با تضمین اصالت و بهترین قیمت
+              از ROMA WATCH تهیه کنید.
+            </p>
+            <div class="hero-btns">
+              <a class="btn-glass solid" href="./products.htm?brand=Omega"><i class="bi bi-arrow-left-short"></i> مشاهده کالکشن امگا</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-slide" data-slide="2">
+          <img src="./images/rolex-ad.png" alt="کالکشن رولکس در ROMA WATCH" />
+          <div class="hero-content">
+            <p class="eyebrow">رولکس · سبک زندگی</p>
+            <h1>زمان، ارزشمندتر<br />از <em>هر ساعتی‌ست</em></h1>
+            <p>
+              طراحی بی‌نقص، کیفیت ساخت فوق‌العاده و ماندگاری مثال‌زدنی؛ رولکس
+              انتخابی برای افراد سخت‌پسند و موفق.
+            </p>
+            <div class="hero-btns">
+              <a class="btn-glass solid" href="./products.htm?brand=Rolex"><i class="bi bi-arrow-left-short"></i> مشاهده کالکشن رولکس</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-slide" data-slide="3">
+          <img src="./images/banner-glasses - Copy.png" alt="محصولات جانبی ROMA WATCH" />
+          <div class="hero-content">
+            <p class="eyebrow">فراتر از یک ساعت</p>
+            <h1>کیفیت روما،<br /><em>محدود به ساعت نیست</em></h1>
+            <p>
+              انواع عینک از اقتصادی‌ترین تا لوکس‌ترین‌ها، روی میز برای انتخاب شما آماده‌ست.
+            </p>
+            <div class="hero-btns">
+              <a class="btn-glass solid" href="./products.htm"><i class="bi bi-arrow-left-short"></i> مشاهده محصولات جانبی</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-controls">
+        <div class="hero-arrows">
+          <button class="hero-arrow" id="heroPrev" aria-label="اسلاید قبلی"><i class="bi bi-chevron-right"></i></button>
+          <button class="hero-arrow" id="heroNext" aria-label="اسلاید بعدی"><i class="bi bi-chevron-left"></i></button>
+        </div>
+        <div class="hero-dots" id="heroDots"></div>
+      </div>
+
+      <div class="scroll-cue">
+        <span>اسکرول کنید</span>
+        <i class="bi bi-chevron-down"></i>
+      </div>
+
+      <div class="hero-progress"><div class="hero-progress-bar" id="heroProgress"></div></div>
+    </section>
+
+    <!-- ============== FEATURES BAR ============== -->
+    <section class="features" data-reveal>
+      <div class="feature">
+        <i class="bi bi-patch-check-fill"></i>
+        <h3>ضمانت اصالت کالا</h3>
+        <p>تمام محصولات با تضمین اصل بودن و کیفیت عرضه خواهند شد.</p>
+      </div>
+      <div class="feature">
+        <i class="bi bi-truck"></i>
+        <h3>ارسال سریع</h3>
+        <p>سفارش شما در کوتاه‌ترین زمان ممکن به دستتان خواهد رسید.</p>
+      </div>
+      <div class="feature">
+        <i class="bi bi-arrow-repeat"></i>
+        <h3>ضمانت بازگشت</h3>
+        <p>امکان مرجوعی کالا طبق شرایط بازگشت تا <span>۷</span> روز فراهم است.</p>
+      </div>
+      <div class="feature">
+        <i class="bi bi-headset"></i>
+        <h3>پشتیبانی ۲۴ ساعته</h3>
+        <p>تیم پشتیبانی هر لحظه در کمترین زمان پاسخگوی شماست.</p>
+      </div>
+    </section>
+
+    <!-- ============== FEATURED PRODUCTS ============== -->
+    <section class="featured-products" data-reveal>
+      <h1>برترین‌های هفته</h1>
+      <div class="products-container" data-limit="6" data-section="featured"></div>
+    </section>
+
+    <!-- ============== POPULAR BRANDS ============== -->
+    <section class="most-popular" data-reveal>
+      <h1>برندهای محبوب رو ببین!</h1>
+      <div class="brand-cards">
+        <div class="brand-card"><a href="./products.htm?brand=Rolex"><img alt="Rolex" src="./images/rolex-png-logo-3497.png" /></a></div>
+        <div class="brand-card"><a href="./products.htm?brand=Casio"><img alt="Casio" src="./images/casio.png" /></a></div>
+        <div class="brand-card"><a href="./products.htm?brand=Omega"><img alt="Omega" src="./images/omega.png" /></a></div>
+        <div class="brand-card"><a href="./products.htm?brand=Longines"><img alt="Longines" src="./images/longines.png" /></a></div>
+        <div class="brand-card"><a href="./products.htm?brand=Seiko"><img alt="Seiko" src="./images/seiko.png" /></a></div>
+      </div>
+    </section>
+
+    <div class="breack-section"><div class="line"></div><i class="bi bi-watch"></i><div class="line"></div></div>
+
+    <!-- ============== MEN'S WATCHES / BRAND ADS ============== -->
+    <section class="men-watches" data-reveal>
+      <h1>برترین‌های مردانه</h1>
+
+      <div class="omega-ad">
+        <img alt="" src="./images/omega-ad.png" />
+        <div class="ad-text">
+          <h1>امگا، نماد دقت، اصالت و شکوهی بی‌پایان!</h1>
+          <h4>جدیدترین و خاص‌ترین مدل‌های امگا را با تضمین اصالت و بهترین قیمت از ROMA WATCH تهیه کنید.</h4>
+          <p>
+            باکیفیت‌ترین مدل‌های امگا را گردآوری کرده‌ایم تا تجربه‌ای متفاوت
+            از خرید یک ساعت لوکس را برای شما رقم بزنیم. با تضمین اصالت کالا،
+            پشتیبانی تخصصی و قیمت رقابتی، روما واچ انتخابی مطمئن برای
+            علاقه‌مندان واقعی برند امگاست.
+          </p>
+        </div>
+      </div>
+      <div class="men-omega-products-container" data-brand="Omega" data-limit="5" data-section="brand"></div>
+      <div class="see-more"><a class="see-more-btn" href="./products.htm?brand=Omega">مشاهده بیشتر</a></div>
+
+      <div class="rolex-ad">
+        <img alt="" src="./images/rolex-ad.png" />
+        <div class="ad-text">
+          <h1>رولکس؛ نماد اعتبار، دقت و شکوه</h1>
+          <h4>
+            رولکس فقط یک نام نیست؛ نمادی از موفقیت، اصالت و سبک زندگی خاص است.
+            طراحی بی‌نقص، کیفیت ساخت فوق‌العاده و ماندگاری مثال‌زدنی، رولکس را
+            به انتخابی برای افراد سخت‌پسند و موفق تبدیل کرده است.
+          </h4>
+          <p>رولکس را انتخاب کنید؛ چون زمان، ارزشمندتر از آن است که با هر ساعتی سنجیده شود.</p>
+        </div>
+      </div>
+      <div class="men-rolex-products-container" data-brand="Rolex" data-limit="5" data-section="brand"></div>
+      <div class="see-more"><a class="see-more-btn" href="./products.htm?brand=Rolex">مشاهده بیشتر</a></div>
+    </section>
+
+    <div class="breack-section"><div class="line"></div><i class="bi bi-watch"></i><div class="line"></div></div>
+
+    <!-- ============== CATEGORY GRID ============== -->
+    <section class="category" data-reveal>
+      <h1>نگاهی به دسته‌بندی ما بیندازید و انتخاب سریع‌تری داشته باشید!</h1>
+      <div class="category-container">
+        <a href="./products.htm?style=%D9%84%D9%88%DA%A9%D8%B3"><div class="category-item"><h1>لوکس</h1></div></a>
+        <a href="./products.htm?style=%D8%BA%D9%88%D8%A7%D8%B5%DB%8C"><div class="category-item"><h1>غواصی</h1></div></a>
+        <a href="./products.htm?style=%D9%86%D8%B8%D8%A7%D9%85%DB%8C"><div class="category-item"><h1>نظامی</h1></div></a>
+        <a href="./products.htm?style=%D9%87%D9%88%D8%B4%D9%85%D9%86%D8%AF"><div class="category-item"><h1>هوشمند</h1></div></a>
+        <a href="./products.htm?style=%D8%AE%D9%84%D8%A8%D8%A7%D9%86%DB%8C"><div class="category-item"><h1>خلبانی</h1></div></a>
+        <a href="./products.htm?style=%D8%A7%D8%B3%D9%BE%D8%B1%D8%AA"><div class="category-item"><h1>اسپرت</h1></div></a>
+        <a href="./products.htm?style=%DA%A9%DA%98%D9%88%D8%A7%D9%84"><div class="category-item"><h1>کژوال</h1></div></a>
+        <a href="./products.htm?style=%D8%B1%D8%B3%D9%85%DB%8C"><div class="category-item"><h1>رسمی</h1></div></a>
+        <a href="./products.htm?discount=true"><div class="category-item roma-offer"><h1><span>پیشنهاد</span>روما</h1></div></a>
+        <a href="./products.htm?style=%D9%81%D8%B4%D9%86"><div class="category-item"><h1>فشن</h1></div></a>
+      </div>
+    </section>
+
+    <div class="breack-section"><div class="line"></div><i class="bi bi-watch"></i><div class="line"></div></div>
+
+    <!-- ============== SIDE PRODUCTS AD ============== -->
+    <section class="glasses-ad" data-reveal>
+      <div class="glasses-banner" id="glasses-banner">
+        <div class="banner">
+          <img alt="" src="./images/banner-glasses - Copy.png" />
+          <div class="content">
+            <h1>کیفیت محصولات روما تنها محدود به ساعت نیست!</h1>
+            <h3>تضمین می‌دهیم باکیفیت‌ترین محصولات را به شما خواهیم داد</h3>
+            <p>انواع عینک‌ها از اقتصادی‌ترین تا لوکس‌ترین‌ها، روی میز برای انتخاب شما!</p>
+            <a href="./products.htm">نگاهی به محصولات خواهم انداخت <i class="bi bi-arrow-left-short"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== FOOTER ============== -->
+    <footer>
+      <div class="cols-container">
+        <div class="col col-1">
+          <h3>خرید و همکاری</h3>
+          <ul>
+            <li><a href="./about.html#shipping">روش‌های ارسال و رهگیری</a></li>
+            <li><a href="./about.html#ordering">چگونه ثبت سفارش کنم</a></li>
+            <li><a href="./about.html#delivery">سفارش کی به دستم می‌رسد</a></li>
+            <li><a href="./about.html#authenticity">چگونه از اصالت کالا مطمئن شوم</a></li>
+          </ul>
+        </div>
+        <div class="col col-2">
+          <h3>خدمات روما</h3>
+          <ul>
+            <li><a href="./about.html#shipping">ارسال یک روزه برای ایلام</a></li>
+            <li><a href="./about.html#shipping">ارسال دو تا شش روزه در کل کشور</a></li>
+            <li><a href="./about.html#returns">هفت روز ضمانت برگشت کالا</a></li>
+            <li><a href="./about.html#installment">خرید اقساطی از روما</a></li>
+            <li><a href="./about.html#after-sales">خدمات پس از فروش</a></li>
+          </ul>
+        </div>
+        <div class="col col-3">
+          <h3>پرفروش‌ترین برندها</h3>
+          <ul>
+            <li><a href="./products.htm?brand=%D9%86%D8%A7%D9%88%DB%8C%20%D9%81%D9%88%D8%B1%D8%B3">ناوی فورس</a></li>
+            <li><a href="./products.htm?brand=%D9%BE%D8%AA%DA%A9%20%D9%81%DB%8C%D9%84%DB%8C%D9%BE">پتک فیلیپ</a></li>
+            <li><a href="./products.htm?brand=%D8%B1%D9%88%D9%84%DA%A9%D8%B3">رولکس</a></li>
+            <li><a href="./products.htm?brand=%D8%A7%D8%AF%D9%85%D8%A7%D8%B1%D8%B3%20%D9%BE%DB%8C%DA%AF%D9%87">ادمارس پیگه</a></li>
+            <li><a href="./products.htm?brand=%D9%88%D8%A7%D8%AA%D8%B3%D9%88%D9%86">واتسون</a></li>
+          </ul>
+        </div>
+        <div class="col col-4">
+          <h3>ترتیب و دسته‌بندی قیمت</h3>
+          <ul>
+            <li><a href="./products.htm?sort=asc">ارزان‌ترین به گران‌ترین</a></li>
+            <li><a href="./products.htm?sort=desc">گران‌ترین به ارزان‌ترین</a></li>
+            <li><a href="./products.htm?gender=%D8%B3%D8%AA">ساعت‌های ست</a></li>
+            <li><a href="./products.htm?style=%D9%84%D9%88%DA%A9%D8%B3">ساعت‌های لوکس</a></li>
+            <li><a href="./products.htm?style=%DA%A9%D9%84%D8%A7%D8%B3%DB%8C%DA%A9">ساعت‌های کلاسیک</a></li>
+          </ul>
+        </div>
+        <div class="col col-5">
+          <div class="logo">ROMA WATCH</div>
+          <p style="font-size:.82rem;color:var(--text-dim);line-height:1.9;margin-bottom:18px;">
+            مرجع خرید ساعت مچی اصل؛ از اقتصادی‌ترین تا لوکس‌ترین برندهای دنیا.
+          </p>
+          <div class="medias-icon">
+            <i class="bi bi-instagram"></i>
+            <i class="bi bi-telegram"></i>
+          </div>
+        </div>
+      </div>
+      <div class="developer-address">
+        <p>© تمامی حقوق برای ROMA WATCH محفوظ است.</p>
+        <div class="link-to-developer">
+          <span>تیم طراحی:</span>
+          <a href="https://instagram.com/taha_dabiri21">
+            <p>taha_dabiri21</p>
+            <i class="bi bi-instagram"></i>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./api.js"></script>
+    <script src="./products-data.js"></script>
+      <script src="./script.js"></script>
+    <script src="./ui.js"></script><script src="./search.js"></script><script src="./theme.js"></script>
+  </body>
+</html>

@@ -1,0 +1,185 @@
+/* ============================================================
+   ROMA WATCH — Cart page theme override
+   Loaded AFTER cart.css: same selectors, brass/glass palette.
+   ============================================================ */
+
+/* cart.css hardcodes its own unconditional .top-bar padding (a leftover
+   from the old purple theme) which otherwise beats style.css's shared
+   responsive header padding at every width, including mobile — squeezing
+   the centered logo against the icon cluster there too. */
+.top-bar{padding:16px 40px;height:auto;box-shadow:none;backdrop-filter:blur(18px) saturate(140%);}
+@media (max-width:960px){
+  .top-bar{padding:14px 18px;}
+}
+
+.cart-page-container{
+  color:var(--text);margin-top:0;padding:0 6vw 70px;
+}
+.cart-page-container h1 i{color:var(--brass);font-size:1.7rem;}
+.cart-page-container p{
+  margin-right:0;color:var(--text-dim);background:var(--glass);
+  border:1px solid var(--glass-brd);border-radius:var(--r-full);
+  padding:7px 16px;font-size:.8rem;
+}
+.cart-page-container p i{color:var(--brass);}
+
+.cart-container{margin-top:26px;gap:22px;}
+
+.cart-container .cart-report{
+  width:30%;height:auto;top:150px;
+  border:1px solid var(--glass-brd);
+  border-radius:var(--r-lg);
+  background:linear-gradient(160deg,var(--glass-2),var(--glass));
+  backdrop-filter:blur(20px) saturate(140%);
+}
+.cart-container .cart-managment{
+  width:70%;border-radius:var(--r-lg);
+  background:linear-gradient(160deg,var(--glass-2),var(--glass));
+  border:1px solid var(--glass-brd);
+  backdrop-filter:blur(16px);
+}
+
+.cart-report h1{font-size:1.15rem;font-weight:700;padding-right:22px;}
+.cart-report .total-price{padding-right:22px;}
+.cart-report .total-price h6{font-size:.85rem;font-weight:400;color:var(--text-dim);}
+.cart-report .total-price h6 p{color:var(--brass-lt);font-size:.72rem;}
+.total-price p.total-price-value{color:var(--text-dim);font-size:1rem;}
+
+.sending-price{border-bottom:1px solid var(--glass-brd);}
+.sending-price h6{font-size:.85rem;font-weight:400;color:var(--text-dim);}
+.sending-price .sending-price-value{color:var(--ok);width:auto;font-size:1rem;}
+
+.final-price{padding:0 22px;}
+.final-price .final-price-value{color:var(--brass-lt);font-size:1.15rem;}
+.final-price .final-price-value span{font-size:.72rem;color:var(--text-faint);font-weight:400;}
+
+.continue-payment{
+  background:linear-gradient(120deg,var(--brass-lt),var(--brass));
+  color:var(--ink);border-radius:var(--r-full);font-size:.92rem;
+}
+.continue-payment #continue-payment{color:var(--ink);}
+.continue-payment:hover{box-shadow:0 14px 30px rgba(201,162,75,.25);}
+.continue-payment:hover #continue-payment{color:var(--ink);}
+
+.continue-shopping{
+  background:var(--glass);border:1px solid var(--glass-brd-2);
+  border-radius:var(--r-full);font-size:.88rem;color:var(--text);
+}
+.continue-shopping:hover{background:var(--glass-2);border-color:var(--brass);}
+
+.waranty:nth-child(1),.waranty:nth-child(2){border-bottom:1px solid var(--glass-brd);}
+.waranty-title{color:var(--text-dim);font-size:.85rem;}
+.waranty-title i{color:var(--brass);font-size:1.15rem;}
+.about-waranty-link i:hover{color:var(--brass-lt);}
+/* cart.css caps .waranties at a fixed 150px and each .waranty row at 50px
+   with its own margin-top — three rows need more room than that, so the
+   last one was pushed past the card's bottom edge. */
+.waranties{height:auto;padding-bottom:6px;}
+.waranty{height:auto;min-height:50px;}
+
+.products-information-title{
+  border-bottom:1px solid var(--glass-brd);padding:14px 20px;
+  display:flex;justify-content:start;align-items:center;
+}
+.products-information-title h4{font-weight:500;color:var(--text-faint);font-size:.78rem;}
+/* عرض هر ستون راهنما دقیقاً باید با عرض همون ستون توی ردیف محصول یکی باشه
+   (تعریف شده توی cart.css: .cart-product-name, .cart-product-image, ...) */
+.products-information-title h4.col-name{width:20%;}
+.products-information-title h4.col-image{width:60px;}
+.products-information-title h4.col-price{width:15%;text-align:center;}
+.products-information-title h4.col-qty{width:120px;margin-right:20px;text-align:center;}
+.products-information-title h4.col-options{width:15%;margin-right:16px;text-align:center;}
+.products-information-title h4.col-total{width:10%;margin-right:5px;text-align:center;}
+.products-information-title h4.col-remove{margin-right:40px;min-width:32px;text-align:center;}
+
+.cart-product-card{
+  padding:16px;margin:16px 16px 0;border-radius:var(--r-md);
+  background:var(--glass);border:1px solid var(--glass-brd);
+  transition:.3s var(--ease);
+}
+.cart-product-card:hover{border-color:var(--brass);}
+.cart-product-card:last-child{margin-bottom:16px;}
+
+.cart-product-name .cart-product-brand{color:var(--brass-lt);font-weight:700;font-size:1rem;}
+.cart-product-name .cart-product-title{color:var(--text);font-weight:400;font-size:.95rem;}
+.cart-product-name .cart-product-model{color:var(--text-faint);font-size:.78rem;}
+.cart-product-name .inventory{
+  background:rgba(127,179,137,.14);border:1px solid var(--ok);color:var(--ok);
+  font-size:.68rem;width:fit-content;padding:3px 9px;
+}
+.inventory i{color:var(--ok);font-size:.85rem;}
+
+.cart-product-price p{color:var(--brass-lt);font-size:1rem;}
+
+.number-of-product{border:1px solid var(--glass-brd);border-radius:var(--r-full);padding:6px 10px;}
+.number-of-product input{color:var(--text);}
+.number-of-product i{color:var(--brass);font-size:1.1rem;}
+
+.options-of-product h5{
+  background:var(--glass);border:1px solid var(--glass-brd);color:var(--text-dim);
+  font-weight:400;font-size:.72rem;border-radius:var(--r-full);width:auto;padding:5px 12px;
+}
+.options-of-product{margin-right:16px;}
+
+.cart-product-total-price p{color:var(--brass-lt);font-size:1rem;}
+
+.cart-product-image{
+  border:1px solid var(--glass-brd);border-radius:var(--r-sm);
+  overflow:hidden;background:#fff;flex-shrink:0;
+}
+.cart-product-image img{
+  width:100%;height:100%;object-fit:contain;display:block;
+}
+
+.remove-product-in-cart{color:var(--danger);}
+.remove-product-in-cart:hover{color:#ff6b5c;}
+/* بدون flex-shrink:0، وقتی مجموع عرض ستون‌های ردیف از عرض کارت بیشتر میشه
+   (که با مقادیر ثابت/درصدی legacy همیشه همینطوره)، این دکمه چون خودش هیچ
+   عرض ذاتی‌ای نداره (فقط یه آیکون با margin زیاد) کاملاً به عرض صفر جمع
+   میشه و کلاً از دید ناپدید میشه - این هم علت اون margin-right:80px غیرضروری
+   رو حذف می‌کنه که خودش باعث سرریز بیشتر می‌شد. */
+.remove-product-in-cart{
+  flex-shrink:0;min-width:32px;height:32px;
+  display:flex;align-items:center;justify-content:center;
+  margin-right:40px;border-radius:var(--r-full);transition:.2s var(--ease);
+  border:1px solid var(--glass-brd);
+}
+.remove-product-in-cart:hover{background:rgba(217,122,108,.12);}
+
+.roma-dynamic-cart{padding-bottom:4px;}
+
+@media (max-width:860px){
+  .cart-page-container{margin-top:0;padding:0 5vw 60px;}
+  .cart-product-card{background:var(--glass);border-radius:var(--r-md);}
+}
+
+/* ---------- Responsive: restore the stacked mobile layout that the
+   unscoped desktop rules above would otherwise cancel out ---------- */
+@media (max-width:1024px){
+  .cart-container .cart-report{width:34%;}
+  .cart-container .cart-managment{width:64%;}
+}
+@media (max-width:860px){
+  .cart-container{flex-direction:column-reverse;gap:16px;}
+  .cart-container .cart-report,
+  .cart-container .cart-managment{
+    width:100%;height:auto;position:static;top:auto;
+  }
+  .cart-container .cart-report{margin-bottom:0;}
+  .products-information-title{display:none;}
+  .cart-product-card{
+    flex-wrap:wrap;gap:10px;margin:14px 12px 0;padding:14px;
+  }
+  .cart-product-card:last-child{margin-bottom:14px;}
+  .cart-product-image{width:64px;}
+  .cart-product-name{width:calc(100% - 84px);}
+  .cart-product-price{text-align:start;}
+  .options-of-product{flex-direction:row;flex-wrap:wrap;}
+}
+@media (max-width:480px){
+  .cart-page-container h1{font-size:1.2rem;}
+  .cart-page-container{padding:0 4vw 50px;}
+  .cart-product-image{width:52px;}
+  .cart-product-name .cart-product-title{font-size:.92rem;}
+  .final-price .final-price-value{font-size:1rem;}
+}

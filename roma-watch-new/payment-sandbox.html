@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+    <script>
+      (function(){
+        try{
+          var t = localStorage.getItem('roma-theme');
+          document.documentElement.setAttribute('data-theme', t === 'dark' ? 'dark' : 'light');
+        }catch(e){
+          document.documentElement.setAttribute('data-theme','light');
+        }
+      })();
+    </script>
+
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>درگاه پرداخت (Sandbox) | ROMA WATCH</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet"/>
+<link href="./style.css" rel="stylesheet"/>
+<link href="./cart.css" rel="stylesheet"/><link href="./cart-theme.css" rel="stylesheet"/>
+<link href="./account-checkout.css" rel="stylesheet"/>
+<link href="./theme.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="payment-result-container" style="padding-top:60px;">
+  <div class="payment-result-card">
+    <div style="background:rgba(217,122,108,.12);border:1px solid var(--danger);color:var(--danger);border-radius:var(--r-sm);padding:10px 14px;font-size:.78rem;margin-bottom:20px;">
+      این یک درگاه شبیه‌سازی‌شده (Sandbox) برای تست است — هیچ پرداخت واقعی انجام نمی‌شود.
+      باید قبل از استفاده‌ی واقعی با یک درگاه معتبر (مثلاً زرین‌پال) جایگزین شود.
+    </div>
+    <i class="bi bi-bank payment-result-icon pending"></i>
+    <h2>درگاه پرداخت</h2>
+    <div id="sandboxInfo" class="payment-result-meta">
+      <p class="muted">در حال بارگذاری اطلاعات پرداخت...</p>
+    </div>
+    <div class="payment-result-actions" id="sandboxActions" hidden>
+      <button class="btn-brass" id="btnSuccess"><i class="bi bi-check-circle"></i> شبیه‌سازی پرداخت موفق</button>
+      <button class="btn-outline" id="btnFail" style="border-color:var(--danger);color:var(--danger);"><i class="bi bi-x-circle"></i> شبیه‌سازی پرداخت ناموفق</button>
+    </div>
+  </div>
+</div>
+<script src="./api.js"></script>
+<script src="./payment-sandbox.js"></script>
+</body>
+</html>

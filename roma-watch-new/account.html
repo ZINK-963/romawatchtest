@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+    <script>
+      (function(){
+        try{
+          var t = localStorage.getItem('roma-theme');
+          document.documentElement.setAttribute('data-theme', t === 'dark' ? 'dark' : 'light');
+        }catch(e){
+          document.documentElement.setAttribute('data-theme','light');
+        }
+      })();
+    </script>
+
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>حساب کاربری | ROMA WATCH</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet"/>
+<link href="./style.css" rel="stylesheet"/>
+<link href="./cart.css" rel="stylesheet"/><link href="./cart-theme.css" rel="stylesheet"/>
+<link href="./account-checkout.css" rel="stylesheet"/>
+<link href="./theme.css" rel="stylesheet"/>
+</head>
+<body>
+    <div class="scroll-progress" id="scrollProgress"></div>
+<header class="header">
+<div class="top-bar tob-bar-products-page">
+<button class="nav-toggle" id="navToggle" aria-label="باز کردن منو" aria-expanded="false"><span></span><span></span><span></span></button>
+<div class="logo"><h1>ROMA WATCH</h1></div>
+<div class="actions">
+<button class="icon-btn theme-toggle" id="themeToggle" type="button" aria-label="تغییر تم روشن و تاریک"><i class="bi bi-moon-stars theme-icon-dark"></i><i class="bi bi-sun theme-icon-light"></i></button>
+<a class="track-btn" href="./tracking.html" style="text-decoration:none">رهگیری محصولات</a>
+<a href="./cart.html"><div class="cart-wrapper"><i class="bi bi-cart2"></i><span class="badge">0</span></div></a>
+<span class="account-name" id="accountName" hidden></span>
+<div class="login-wrapper"><a class="login-link" href="./login.html"><i class="bi bi-person-fill"></i></a></div>
+</div>
+</div>
+<div class="nav-scrim" id="navScrim"></div>
+<nav class="nav" id="siteNav">
+<div class="nav-account-panel" id="navAccountPanel">
+<div class="nav-clock" id="navClock">--:--:--</div>
+<div class="nav-account-name" id="navAccountName"></div>
+<a class="nav-login-link" id="navLoginLink" href="./login.html"><i class="bi bi-person-fill"></i><span>ورود / عضویت</span></a>
+</div>
+<ul class="nav-list">
+<li><a class="nav-item" href="./index.html"><i class="bi bi-house"></i> ساعت روما</a></li>
+<li><a class="nav-item" href="./products.htm"><i class="bi bi-stars"></i>محصولات</a></li>
+</ul>
+</nav>
+</header>
+
+<div class="account-page-container">
+  <div class="breadcrumb"><a href="./index.html">صفحه اصلی</a><i class="bi bi-chevron-left"></i><span>حساب کاربری</span></div>
+  <h1><i class="bi bi-person-circle"></i> حساب کاربری</h1>
+
+  <div id="accountGuard" class="checkout-guard" hidden>
+    <i class="bi bi-lock"></i>
+    <p>برای دیدن حساب کاربری ابتدا وارد بشید.</p>
+    <a class="btn-brass" href="./login.html?returnTo=./account.html">ورود / عضویت</a>
+  </div>
+
+  <div id="accountContent" hidden>
+    <div class="account-tabs">
+      <button class="account-tab active" data-tab="profile">پروفایل</button>
+      <button class="account-tab" data-tab="addresses">آدرس‌های من</button>
+      <button class="account-tab" data-tab="orders">سفارش‌های من</button>
+    </div>
+
+    <div class="account-panel active" id="panel-profile">
+      <div class="account-card">
+        <form id="profileForm" class="profile-form">
+          <div class="field"><label>شماره موبایل</label><input type="text" id="profilePhone" disabled></div>
+          <div class="field"><label for="profileName">نام و نام خانوادگی</label><input type="text" id="profileName"></div>
+          <div class="field"><label for="profileEmail">ایمیل (اختیاری)</label><input type="email" id="profileEmail"></div>
+          <button type="submit" class="btn-brass">ذخیره تغییرات</button>
+          <div id="profileMsg" class="form-msg" hidden></div>
+        </form>
+        <button class="btn-danger-outline" id="logoutBtn" style="margin-top:18px;padding:10px 18px;">
+          <i class="bi bi-box-arrow-right"></i> خروج از حساب کاربری
+        </button>
+      </div>
+    </div>
+
+    <div class="account-panel" id="panel-addresses">
+      <div class="account-card">
+        <div id="addressList"></div>
+        <button class="btn-outline" id="addAddressBtn"><i class="bi bi-plus-lg"></i> افزودن آدرس جدید</button>
+        <form id="addressForm" hidden style="margin-top:18px;">
+          <input type="hidden" id="addressId">
+          <div class="form-row">
+            <div class="field"><label for="addrTitle">عنوان آدرس (مثلاً خانه، محل کار)</label><input id="addrTitle" required></div>
+            <div class="field"><label for="addrReceiverPhone">شماره تماس گیرنده</label><input id="addrReceiverPhone" required></div>
+          </div>
+          <div class="form-row">
+            <div class="field"><label for="addrProvince">استان</label><input id="addrProvince" required></div>
+            <div class="field"><label for="addrCity">شهر</label><input id="addrCity" required></div>
+          </div>
+          <div class="field"><label for="addrAddress">آدرس کامل</label><textarea id="addrAddress" rows="2" required></textarea></div>
+          <div class="field"><label for="addrPostal">کد پستی</label><input id="addrPostal" required></div>
+          <div style="display:flex;gap:10px;">
+            <button type="submit" class="btn-brass">ذخیره آدرس</button>
+            <button type="button" class="btn-outline" id="cancelAddressBtn">انصراف</button>
+          </div>
+          <div id="addressMsg" class="form-msg" hidden></div>
+        </form>
+      </div>
+    </div>
+
+    <div class="account-panel" id="panel-orders">
+      <div class="account-card">
+        <div id="ordersList"><p class="muted">در حال بارگذاری...</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="order-detail-overlay" id="orderDetailOverlay" hidden>
+  <div class="order-detail-box">
+    <h3><span>جزئیات سفارش</span><i class="bi bi-x-lg close-btn" id="closeOrderDetail"></i></h3>
+    <div id="orderDetailBody"></div>
+  </div>
+</div>
+
+<footer>
+<div class="shop-address"></div>
+<div class="developer-address">
+<p>طراحی شده و توسعه یافته توسط تیم طراحی ZINK DEVELOPERS</p>
+</div>
+</footer>
+<script src="./api.js"></script><script src="./products-data.js"></script>
+<script src="./account.js"></script>
+<script src="./ui.js"></script><script src="./theme.js"></script></body>
+</html>

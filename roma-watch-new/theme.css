@@ -1,0 +1,413 @@
+/* ============================================================
+   ROMA WATCH — Theme Engine & Navigation Feedback
+   Loaded LAST on every page. Adds:
+     1) Icon-only search + a dark/light theme toggle in the header
+     2) A full light-mode palette (derived from the dark tokens),
+        switched on <html data-theme="light">, with a circular
+        "wipe" reveal animation on toggle
+     3) A rotating hourglass page-loader shown during page-to-page
+        navigation
+     4) A yellow scroll-progress line pinned to the very top edge
+   ============================================================ */
+
+/* ---------------------------------------------------------
+   1. ICON BUTTONS — shared shape for search / theme toggle,
+      matching the existing favorites/login circular buttons.
+   --------------------------------------------------------- */
+.icon-btn{
+  position:relative;
+  width:42px;height:42px;aspect-ratio:1/1;flex-shrink:0;box-sizing:border-box;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:50%;
+  border:1px solid var(--glass-brd);
+  background:var(--glass);
+  transition:.3s var(--ease);
+  font-size:1.05rem;
+  overflow:hidden;
+}
+.icon-btn:hover{border-color:var(--brass);color:var(--brass-lt);transform:translateY(-2px);}
+.icon-btn:active{transform:translateY(0) scale(.94);}
+
+/* ---------------------------------------------------------
+   2. SEARCH — icon in the header, expands into a full-width
+      panel that drops down from beneath the whole header.
+   --------------------------------------------------------- */
+.search-toggle.active{border-color:var(--brass);color:var(--brass-lt);}
+
+.search-panel{
+  position:absolute;top:100%;left:0;right:0;
+  overflow:hidden;
+  max-height:0;
+  opacity:0;
+  background:rgba(6,7,11,.78);
+  backdrop-filter:blur(18px) saturate(140%);
+  -webkit-backdrop-filter:blur(18px) saturate(140%);
+  border-bottom:1px solid var(--glass-brd);
+  transition:max-height .5s var(--ease), opacity .35s var(--ease);
+  z-index:900;
+}
+.search-panel.open{max-height:520px;opacity:1;}
+.search-panel-inner{
+  display:flex;align-items:center;gap:10px;
+  max-width:640px;margin:0 auto;padding:16px 6vw;
+}
+.search-panel-inner i.bi-search{color:var(--text-faint);font-size:.95rem;flex-shrink:0;}
+.search-panel-inner input{
+  flex:1;min-width:0;background:var(--glass);border:1px solid var(--glass-brd);
+  border-radius:var(--r-full);padding:11px 18px;color:var(--text);
+  font-size:.9rem;outline:none;font-family:inherit;transition:.3s var(--ease);
+}
+.search-panel-inner input::placeholder{color:var(--text-faint);}
+.search-panel-inner input:focus{border-color:var(--brass);background:var(--glass-2);}
+.search-close{
+  width:38px;height:38px;flex-shrink:0;
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  border:1px solid var(--glass-brd);background:var(--glass);
+  transition:.3s var(--ease);font-size:.85rem;
+}
+.search-close:hover{border-color:var(--brass);color:var(--brass-lt);}
+
+/* ---------- Live search results ---------- */
+.search-results-list{
+  max-width:640px;margin:0 auto;padding:0 6vw 14px;
+  max-height:380px;overflow-y:auto;
+}
+.search-result-item{
+  display:flex;align-items:center;gap:12px;padding:9px 10px;
+  border-radius:var(--r-sm);text-decoration:none;color:inherit;
+  transition:.2s var(--ease);cursor:pointer;
+}
+.search-result-item:hover,.search-result-item.active{background:var(--glass);}
+.search-result-item img{
+  width:38px;height:38px;object-fit:contain;background:var(--glass-2);
+  border-radius:var(--r-sm);flex-shrink:0;
+}
+.search-result-item .sr-name{flex:1;min-width:0;}
+.search-result-item .sr-brand{font-size:.68rem;color:var(--text-faint);}
+.search-result-item .sr-title{font-size:.85rem;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.search-result-item .sr-price{font-size:.78rem;color:var(--brass-lt);white-space:nowrap;flex-shrink:0;}
+.search-results-empty,.search-results-hint{
+  padding:14px 10px;font-size:.8rem;color:var(--text-faint);text-align:center;
+}
+
+@media (max-width:960px){
+  .search-panel-inner{padding:14px 5vw;}
+}
+
+/* ---------------------------------------------------------
+   3. THEME TOGGLE — sun/moon crossfade driven purely by the
+      data-theme attribute (no JS class juggling needed).
+   --------------------------------------------------------- */
+.theme-toggle i{
+  position:absolute;
+  transition:opacity .45s var(--ease), transform .5s var(--ease), color .3s var(--ease);
+}
+.theme-toggle .theme-icon-dark{opacity:1;transform:rotate(0deg) scale(1);}
+.theme-toggle .theme-icon-light{opacity:0;transform:rotate(-90deg) scale(.4);}
+html[data-theme="light"] .theme-toggle .theme-icon-dark{opacity:0;transform:rotate(90deg) scale(.4);}
+html[data-theme="light"] .theme-toggle .theme-icon-light{opacity:1;transform:rotate(0deg) scale(1);color:#c9861a;}
+
+/* the full-screen "wipe" ripple that plays over a theme switch */
+.theme-ripple{
+  position:fixed;inset:0;z-index:100000;pointer-events:none;
+  clip-path:circle(var(--r,150%) at var(--x,50%) var(--y,50%));
+  transition:clip-path .75s cubic-bezier(.22,.9,.3,1);
+}
+.theme-ripple.run{clip-path:circle(0px at var(--x,50%) var(--y,50%));}
+
+/* ---------------------------------------------------------
+   4. PAGE LOADER — rotating hourglass shown while navigating
+      from one page to another (classic multi-page site).
+   --------------------------------------------------------- */
+.page-loader{
+  position:fixed;inset:0;z-index:99999;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;
+  background:rgba(6,7,11,.85);
+  backdrop-filter:blur(6px);
+  opacity:0;visibility:hidden;pointer-events:none;
+  transition:opacity .3s var(--ease), visibility .3s var(--ease);
+}
+.page-loader.active{opacity:1;visibility:visible;pointer-events:all;}
+
+.hourglass-spin{animation:hgSpin 2.4s linear infinite;}
+.hourglass-svg{overflow:visible;display:block;}
+.hg-frame{fill:none;stroke:var(--brass-lt);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;}
+.hg-cap{fill:var(--brass);}
+.hg-sand-top{
+  fill:var(--brass-lt);
+  transform-box:fill-box;transform-origin:50% 100%;
+  animation:hgSandTop 1.6s ease-in-out infinite;
+}
+.hg-sand-bottom{
+  fill:var(--brass-lt);
+  transform-box:fill-box;transform-origin:50% 0%;
+  animation:hgSandBottom 1.6s ease-in-out infinite;
+}
+.hg-stream{fill:var(--brass-lt);animation:hgStream 1.6s linear infinite;}
+
+@keyframes hgSpin{to{transform:rotate(360deg);}}
+@keyframes hgSandTop{
+  0%{transform:scaleY(1);}
+  45%{transform:scaleY(1);}
+  100%{transform:scaleY(0);}
+}
+@keyframes hgSandBottom{
+  0%{transform:scaleY(0);}
+  55%{transform:scaleY(0);}
+  100%{transform:scaleY(1);}
+}
+@keyframes hgStream{
+  0%{opacity:0;}
+  10%,45%{opacity:1;}
+  55%,100%{opacity:0;}
+}
+
+.loader-label{font-size:.78rem;color:var(--text-dim);letter-spacing:.04em;}
+
+/* ---------------------------------------------------------
+   5. SCROLL PROGRESS — yellow line at the very top edge,
+      always fills strictly left → right regardless of RTL.
+   --------------------------------------------------------- */
+.scroll-progress{
+  position:fixed;top:0;left:0;
+  height:3px;width:0%;
+  background:linear-gradient(90deg,#ffe27a,#ffc93c 55%,#ffb200);
+  box-shadow:0 0 10px rgba(255,201,60,.65);
+  z-index:100001;
+  transition:width .12s linear;
+  pointer-events:none;
+}
+
+/* ---------------------------------------------------------
+   6. LIGHT THEME — palette derived from the dark tokens,
+      same brass/gold identity, inverted to a warm parchment base
+      (kept deliberately a shade deeper than plain white so glass
+      panels, borders and depth still read clearly).
+   --------------------------------------------------------- */
+html[data-theme="light"]{
+  --ink:        #f2ead9;
+  --ink-2:      #e8dcc0;
+  --ink-3:      #dcc9a0;
+
+  --glass:      rgba(31,23,10,.07);
+  --glass-2:    rgba(31,23,10,.12);
+  --glass-brd:  rgba(31,23,10,.18);
+  --glass-brd-2:rgba(31,23,10,.28);
+
+  --brass:      #a9782c;
+  --brass-lt:   #7c5820;
+  --brass-dk:   #5b4116;
+
+  --steel:      #46617e;
+  --steel-dk:   #2c3f52;
+
+  --text:       #221c11;
+  --text-dim:   #5b5647;
+  --text-faint: #8a8471;
+
+  --danger:     #b83f2e;
+  --ok:         #3f7d4d;
+
+  --shadow-glass: 0 8px 32px rgba(60,45,15,.14), inset 0 1px 0 rgba(255,255,255,.5);
+  --shadow-lift:  0 20px 60px rgba(60,45,15,.22);
+}
+
+/* hardcoded (non-token) dark surfaces that need explicit light variants */
+html[data-theme="light"] .top-bar,
+html[data-theme="light"] .top-bar.scrolled-top-header{
+  background:rgba(242,234,217,.82);
+}
+html[data-theme="light"] .nav{
+  border-top-color:rgba(31,23,10,.1);
+  background:rgba(242,234,217,.6);
+}
+html[data-theme="light"] .nav-scrim{background:rgba(20,15,6,.45);}
+html[data-theme="light"] .search-panel{background:rgba(242,234,217,.94);}
+html[data-theme="light"] .product-card .like{background:rgba(242,234,217,.78);}
+@media (max-width:960px){
+  html[data-theme="light"] .top-bar,
+  html[data-theme="light"] .top-bar.scrolled-top-header{background:rgba(242,234,217,.96);}
+  html[data-theme="light"] .nav{background:rgba(242,234,217,.99);}
+  html[data-theme="light"] .dropdown-parent.mobile-open > .dropdown,
+  html[data-theme="light"] .dropdown-parent.mobile-open > .mega-dropdown{background:rgba(31,23,10,.05);}
+}
+html[data-theme="light"] .page-loader{
+  background:rgba(242,234,217,.94);
+}
+html[data-theme="light"] ::-webkit-scrollbar-track{background:var(--ink);}
+html[data-theme="light"] ::selection{background:var(--brass);color:#fff;}
+
+/* ---------------------------------------------------------
+   Small-screen breathing room for the extra header icons.
+   --------------------------------------------------------- */
+@media (max-width:420px){
+  .icon-btn,.login-wrapper .login-link,.cart-wrapper{width:38px;height:38px;font-size:.95rem;}
+  .actions{gap:6px;}
+}
+
+/* ---------------------------------------------------------
+   7b. LOGIN ICON — once the nav collapses into the off-canvas
+       menu, the header no longer has room for it (and it's
+       redundant with the login/logout control now living
+       inside the menu itself, see section 10 below).
+   --------------------------------------------------------- */
+@media (max-width:960px){
+  .login-wrapper{display:none;}
+}
+
+/* ---------------------------------------------------------
+   7. LOGO — smaller, and centered in the header regardless
+      of how many icons sit on either side.
+   --------------------------------------------------------- */
+.top-bar{position:relative;}
+.logo{
+  position:absolute;left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  z-index:1;
+}
+.logo h1{font-size:1.05rem;}
+@media (max-width:420px){
+  .logo h1{font-size:.92rem;}
+}
+@media (max-width:375px){
+  .logo h1{font-size:.8rem;letter-spacing:.07em;}
+}
+/* Below 960px the header also carries the hamburger + icon cluster, and a
+   viewport-centered logo has no idea how wide either side actually is —
+   once their combined width grows, the centered text runs straight into
+   them. Switch the logo back to a normal (shrinkable, non-overlapping)
+   flex item at these sizes instead of freely centering it. */
+@media (max-width:960px){
+  .top-bar{display:flex;}
+  .logo{
+    position:static;left:auto;top:auto;transform:none;
+    order:2;flex:1;min-width:0;
+    display:flex;justify-content:center;
+  }
+  .logo h1{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .nav-toggle{order:1;}
+  .actions{order:3;}
+}
+
+/* ---------------------------------------------------------
+   8. HERO + BRAND AD BANNERS — these always sit on a dimmed
+      photo backdrop by design (in both themes), so their text
+      and glass accents stay fixed instead of following the
+      site's light/dark tokens — otherwise light mode flips the
+      text dark while the backdrop stays dark too.
+   --------------------------------------------------------- */
+.hero-content h1,
+.hero-arrow,
+.omega-ad h1,.rolex-ad h1,
+.glasses-banner h1{color:#f4f1e8;}
+
+.hero-content h1 em,
+.hero-brand-mark span,
+.omega-ad h4,.rolex-ad h4,
+.glasses-banner h3{color:#f0d999;}
+
+.hero-content p,
+.scroll-cue,
+.omega-ad p,.rolex-ad p,
+.glasses-banner p{color:#a6a9b8;}
+
+.hero-arrow{background:rgba(255,255,255,.055);border-color:rgba(255,255,255,.14);}
+.hero-arrow:hover{border-color:#c9a24b;color:#f0d999;}
+
+.hero-btns .btn-glass:not(.solid){
+  background:rgba(255,255,255,.09);
+  border-color:rgba(255,255,255,.24);
+  color:#f4f1e8;
+}
+.hero-btns .btn-glass:not(.solid):hover{border-color:#c9a24b;color:#f0d999;}
+.scroll-cue i{color:#c9a24b;}
+
+/* ---------------------------------------------------------
+   9. ACCOUNT NAME (desktop) — sits next to the login button;
+      the mobile/tablet menu shows the name in its own panel
+      instead, so this is desktop-only.
+   --------------------------------------------------------- */
+.account-name{
+  font-size:.82rem;font-weight:600;color:var(--brass-lt);
+  white-space:nowrap;padding:0 2px;
+}
+@media (max-width:960px){
+  .account-name{display:none;}
+}
+
+/* ---------------------------------------------------------
+   10. NAV ACCOUNT PANEL (mobile/tablet menu only) — a golden
+       digital clock plus the account owner's name, shown at
+       the top of the off-canvas menu when it opens. The
+       favorites link also moves into this menu on these sizes.
+   --------------------------------------------------------- */
+.nav-account-panel{display:none;}
+.nav-favorites-item{display:none;}
+
+@media (max-width:960px){
+  .nav-account-panel{
+    display:block;
+    text-align:center;
+    padding:26px 20px 18px;
+    border-bottom:1px solid var(--glass-brd);
+    margin-bottom:6px;
+  }
+  .nav-clock{
+    font-family:"Courier New",ui-monospace,SFMono-Regular,monospace;
+    font-size:2.15rem;
+    font-weight:700;
+    letter-spacing:.06em;
+    font-variant-numeric:tabular-nums;
+    background:linear-gradient(120deg,var(--brass-lt),var(--brass) 55%,var(--brass-dk));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    filter:drop-shadow(0 0 14px rgba(201,162,75,.35));
+  }
+  .nav-account-name{
+    margin-top:10px;font-size:.86rem;color:var(--text-dim);
+  }
+  .nav-account-name .name{color:var(--brass-lt);font-weight:700;}
+  .nav-account-name:empty{margin-top:0;}
+
+  /* the login/logout control that replaces the header's login
+     icon once it's hidden on these sizes (see section 7b) */
+  .nav-login-link{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    margin-top:14px;padding:10px 22px;
+    border-radius:var(--r-full);
+    border:1px solid var(--glass-brd);
+    background:var(--glass);
+    color:var(--brass-lt);font-weight:600;font-size:.85rem;
+    transition:.3s var(--ease);
+  }
+  .nav-login-link:hover{border-color:var(--brass);background:var(--glass-2);}
+  .nav-login-link i{font-size:1rem;color:var(--brass);}
+
+  .nav-favorites-item{display:block;}
+  .nav-item .favorites-badge{
+    position:static;
+    display:inline-flex;
+    margin-inline-start:8px;
+    vertical-align:middle;
+  }
+}
+
+/* ============== LOADING SKELETONS ============== */
+.skeleton-card{pointer-events:none;}
+.skeleton-block{
+  border-radius:var(--r-sm);
+  background:linear-gradient(90deg,var(--glass-2) 25%,var(--glass) 37%,var(--glass-2) 63%);
+  background-size:400% 100%;
+  animation:skeleton-shimmer 1.6s ease-in-out infinite;
+  margin-bottom:10px;
+}
+.skeleton-image{width:100%;height:150px;}
+.skeleton-line{height:14px;}
+.skeleton-btn{width:100%;height:40px;border-radius:var(--r-full);margin-top:8px;}
+@keyframes skeleton-shimmer{
+  0%{background-position:100% 50%;}
+  100%{background-position:0 50%;}
+}
+@media (prefers-reduced-motion:reduce){
+  .skeleton-block{animation:none;}
+}
+

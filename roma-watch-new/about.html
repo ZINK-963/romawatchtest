@@ -1,0 +1,197 @@
+<!doctype html><html lang="fa" dir="rtl"><head><meta charset="utf-8">
+    <script>
+      (function(){
+        try{
+          var t = localStorage.getItem('roma-theme');
+          document.documentElement.setAttribute('data-theme', t === 'dark' ? 'dark' : 'light');
+        }catch(e){
+          document.documentElement.setAttribute('data-theme','light');
+        }
+      })();
+    </script>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"><title>درباره ما | روما واچ</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"><link rel="stylesheet" href="./style.css">    <link rel="stylesheet" href="./theme.css" />
+  </head><body>
+    <div class="scroll-progress" id="scrollProgress"></div>
+    <div class="page-loader" id="pageLoader" aria-hidden="true">
+      <div class="hourglass-spin">
+        <svg class="hourglass-svg" viewBox="0 0 100 150" width="72" height="108">
+          <path class="hg-frame" d="M20 8 H80 M20 142 H80 M20 8 C20 40 50 55 50 75 C50 95 20 110 20 142 M80 8 C80 40 50 55 50 75 C50 95 80 110 80 142" />
+          <rect class="hg-cap" x="14" y="4" width="72" height="8" rx="3"></rect>
+          <rect class="hg-cap" x="14" y="138" width="72" height="8" rx="3"></rect>
+          <clipPath id="hgTopClip"><path d="M22 10 H78 C78 38 50 54 50 74 C50 54 22 38 22 10 Z"></path></clipPath>
+          <rect class="hg-sand-top" x="20" y="10" width="60" height="64" clip-path="url(#hgTopClip)"></rect>
+          <rect class="hg-stream" x="49" y="70" width="2" height="14"></rect>
+          <clipPath id="hgBottomClip"><path d="M50 76 C50 96 78 112 78 140 H22 C22 112 50 96 50 76 Z"></path></clipPath>
+          <rect class="hg-sand-bottom" x="20" y="76" width="60" height="64" clip-path="url(#hgBottomClip)"></rect>
+        </svg>
+      </div>
+      <p class="loader-label">در حال بارگذاری...</p>
+    </div>
+
+<header class="header">
+<!-- ROW 1 -->
+<div class="top-bar">
+<button class="nav-toggle" id="navToggle" aria-label="باز کردن منو" aria-expanded="false"><span></span><span></span><span></span></button>
+<!-- Right: Logo -->
+<div class="logo">
+<h1>ROMA WATCH</h1>
+</div>
+<!-- Left: Actions -->
+<div class="actions">
+<button class="icon-btn search-toggle" id="searchToggle" type="button" aria-label="جستجو" aria-expanded="false"><i class="bi bi-search"></i></button>
+<button class="icon-btn theme-toggle" id="themeToggle" type="button" aria-label="تغییر تم روشن و تاریک"><i class="bi bi-moon-stars theme-icon-dark"></i><i class="bi bi-sun theme-icon-light"></i></button>
+<a class="track-btn" href="./tracking.html" style="text-decoration:none">رهگیری محصولات</a>
+<a href="./cart.html">
+<div class="cart-wrapper">
+<i class="bi bi-cart2"></i>
+<span class="badge">0</span>
+</div>
+</a>
+<span class="account-name" id="accountName" hidden></span>
+<div class="login-wrapper"><a class="login-link" href="./login.html">
+<i class="bi bi-person-fill"></i>
+</a></div>
+</div>
+</div>
+<!-- ROW 2 -->
+<div class="nav-scrim" id="navScrim"></div>
+      <nav class="nav" id="siteNav">
+<div class="nav-account-panel" id="navAccountPanel">
+<div class="nav-clock" id="navClock">--:--:--</div>
+<div class="nav-account-name" id="navAccountName"></div>
+<a class="nav-login-link" id="navLoginLink" href="./login.html"><i class="bi bi-person-fill"></i><span>ورود / عضویت</span></a>
+</div>
+<ul class="nav-list">
+<li class="nav-favorites-item">
+<a class="nav-item" href="./favorites.html"><i class="bi bi-heart"></i> محصولات مورد علاقه<span class="favorites-badge">0</span></a>
+</li>
+<li>
+<a class="nav-item" href="./index.html"><i class="bi bi-house"></i> ساعت روما</a>
+</li>
+<!-- MEGA MENU -->
+<li class="dropdown-parent mega">
+<a class="nav-item" href="./products.htm"><i class="bi bi-gem"></i> برندها</a>
+            <div class="mega-dropdown">
+              <ul>
+                <li><a href="./products.htm?brand=%D8%A7%D8%AF%D9%85%D8%A7%D8%B1%D8%B3%20%D9%BE%DB%8C%DA%AF%D9%87">ادمارس پیگه</a></li>
+                <li><a href="./products.htm?brand=%D8%A7%D8%B3%D9%BE%D8%B1%DB%8C%D8%AA">اسپریت</a></li>
+                <li><a href="./products.htm?brand=%D8%A7%D9%84%DA%AF%D8%A7%D9%86%D8%B3">الگانس</a></li>
+                <li><a href="./products.htm?brand=%D8%A7%D9%88%D8%B1%DB%8C%D9%86%D8%AA%D8%A7%D9%84">اورینتال</a></li>
+                <li><a href="./products.htm?brand=%D8%A7%DA%AF%D9%86%D8%B1">اگنر</a></li>
+              </ul>
+              <ul>
+                <li><a href="./products.htm?brand=%D8%AF%D9%86%DB%8C%D9%84%20%D9%88%D9%84%DB%8C%D9%86%DA%AF%D8%AA%D9%88%D9%86">دنیل ولینگتون</a></li>
+                <li><a href="./products.htm?brand=%D8%B1%D9%88%D9%84%DA%A9%D8%B3">رولکس</a></li>
+                <li><a href="./products.htm?brand=%D8%B1%D9%88%D9%85%D8%A7%D9%86%D8%B3%D9%88%D9%86">رومانسون</a></li>
+                <li><a href="./products.htm?brand=%D8%B3%DB%8C%D8%AA%DB%8C%D8%B2%D9%86">سیتیزن</a></li>
+              </ul>
+              <ul>
+                <li><a href="./products.htm?brand=%D8%B3%DB%8C%DA%A9%D9%88">سیکو</a></li>
+                <li><a href="./products.htm?brand=%D9%84%D8%A7%DA%A9%D8%B3%D9%85%DB%8C">لاکسمی</a></li>
+                <li><a href="./products.htm?brand=%D9%85%DA%AF%DB%8C%D8%B1">مگیر</a></li>
+                <li><a href="./products.htm?brand=%D9%86%D8%A7%D9%88%DB%8C%20%D9%81%D9%88%D8%B1%D8%B3">ناوی فورس</a></li>
+              </ul>
+              <ul>
+                <li><a href="./products.htm?brand=%D9%88%D8%A7%D8%AA%D8%B3%D9%88%D9%86">واتسون</a></li>
+                <li><a href="./products.htm?brand=%D9%BE%D8%AA%DA%A9%20%D9%81%DB%8C%D9%84%DB%8C%D9%BE">پتک فیلیپ</a></li>
+                <li><a href="./products.htm?brand=%DA%A9%D8%A7%D8%B3%DB%8C%D9%88">کاسیو</a></li>
+                <li><a href="./products.htm?brand=%DA%A9%D8%B1%D8%B3%D8%AA">کرست</a></li>
+              </ul>
+            </div>
+</li>
+<li>
+<a class="nav-item" href="./products.htm?gender=%D9%85%D8%B1%D8%AF%D8%A7%D9%86%D9%87"> <i class="bi bi-watch"></i> ساعت مردانه</a>
+</li>
+<li>
+<a class="nav-item" href="./products.htm?gender=%D8%B2%D9%86%D8%A7%D9%86%D9%87"><i class="bi bi-watch"></i> ساعت زنانه</a>
+</li>
+<li>
+<a class="nav-item" href="./products.htm?gender=%D8%B3%D8%AA"><i class="bi bi-smartwatch"></i> ساعت های ست</a>
+</li>
+<li>
+<a class="nav-item" href="./products.htm"><i class="bi bi-stars"></i>سایر محصولات</a>
+</li>
+<li>
+</li>
+<li>
+<!-- <a href="#"><i class="bi bi-box-arrow-in-right"></i> ورود </a> -->
+</li>
+<li><a class="nav-item" href="./about.html"><i class="bi bi-info-circle"></i> درباره ما</a></li></ul>
+</nav>
+<div class="search-panel" id="searchPanel" role="search"><div class="search-panel-inner"><i class="bi bi-search"></i><input id="searchInput" type="text" placeholder="جستجوی ساعت..." /><button class="search-close" id="searchClose" type="button" aria-label="بستن جستجو"><i class="bi bi-x-lg"></i></button></div><div class="search-results-list" id="searchResultsList"></div></div>
+</header><main class="about-page">
+<div class="breadcrumb"><a href="./index.html">صفحه اصلی</a><i class="bi bi-chevron-left"></i><span>درباره ما</span></div>
+<h1 class="page-title">درباره روما واچ</h1>
+<div class="about-grid">
+<section class="about-card full"><h2>روما واچ؛ انتخاب مطمئن برای خرید ساعت</h2><p>روما واچ یک فروشگاه تخصصی برای عرضه ساعت و محصولات مرتبط است که تلاش می‌کند تجربه‌ای ساده، مطمئن و شفاف برای خرید آنلاین فراهم کند. مشخصات محصولات، قیمت، ویژگی‌ها و شرایط خدمات در اختیار شماست تا با خیال راحت انتخاب کنید.</p><p>برای ارتباط با ما می‌توانید از پشتیبانی فروشگاه و شبکه‌های اجتماعی استفاده کنید.</p><p><i class="bi bi-instagram"></i> اینستاگرام: <a href="https://instagram.com/taha_dabiri21">roma.watch</a></p></section>
+<section id="authenticity" class="about-card"><i class="bi bi-patch-check"></i><h2>ضمانت اصالت کالا</h2><p>تمام کالاها با تعهد فروشگاه نسبت به اصالت عرضه می‌شوند. هنگام تحویل، مشخصات محصول را با اطلاعات سفارش بررسی کنید و در صورت وجود مغایرت، از مسیر پشتیبانی با ما در تماس باشید.</p></section>
+<section id="returns" class="about-card"><i class="bi bi-arrow-repeat"></i><h2>ضمانت بازگشت</h2><p>در چارچوب شرایط بازگشت فروشگاه، امکان درخواست مرجوعی تا ۷ روز فراهم است. محصول باید در شرایط قابل قبول بازگشت و همراه اقلام مربوط به سفارش باشد.</p></section>
+<section id="shipping" class="about-card"><i class="bi bi-truck"></i><h2>ارسال سریع</h2><p>برای ایلام ارسال سریع در نظر گرفته شده و سفارش‌های سایر شهرها نیز طبق برنامه ارسال فروشگاه در کوتاه‌ترین زمان ممکن تحویل شرکت حمل می‌شوند. جزئیات رهگیری در صفحه رهگیری محصولات قابل پیگیری است.</p></section>
+<section id="support" class="about-card"><i class="bi bi-headset"></i><h2>پشتیبانی ۲۴ ساعته</h2><p>برای پرسش درباره انتخاب محصول، ثبت سفارش، ارسال، گارانتی و خدمات پس از فروش می‌توانید از مسیرهای ارتباطی روما واچ استفاده کنید.</p></section>
+<section id="ordering" class="about-card"><h2>چگونه ثبت سفارش کنم؟</h2><p>محصول را انتخاب کنید، مشخصات آن را بررسی و به سبد خرید اضافه کنید. سپس از صفحه سبد خرید ادامه پرداخت را بزنید و اطلاعات لازم را تکمیل کنید.</p></section>
+<section id="delivery" class="about-card"><h2>سفارش چه زمانی می‌رسد؟</h2><p>زمان تحویل به شهر مقصد و روش ارسال بستگی دارد. وضعیت سفارش را می‌توانید از بخش رهگیری محصولات بررسی کنید.</p></section>
+<section id="installment" class="about-card"><h2>خرید اقساطی</h2><p>شرایط خرید اقساطی در صورت فعال بودن این خدمت از طریق پشتیبانی فروشگاه اعلام می‌شود.</p></section>
+<section id="after-sales" class="about-card"><h2>خدمات پس از فروش</h2><p>برای پیگیری گارانتی، مغایرت، تعمیر یا سایر درخواست‌های پس از فروش، اطلاعات سفارش خود را آماده کنید و با پشتیبانی تماس بگیرید.</p></section>
+</div></main><footer>
+<div class="shop-address">
+</div>
+<div class="cols-container">
+<div class="col col-1">
+<h3>خرید و همکاری</h3>
+<ul>
+<li><a href="./about.html#shipping">روش های ارسال و رهگیری</a></li>
+<li><a href="./about.html#ordering">چگونه ثبت سفارش کنم</a></li>
+<li><a href="./about.html#delivery">سفارش کی به دستم میرسد</a></li>
+<li><a href="./about.html#authenticity">چگونه از اصالت کالا مطمین شوم</a></li>
+</ul>
+</div>
+<div class="col col-2">
+<h3>خدمات روما</h3>
+<ul>
+<li><a href="./about.html#shipping">ارسال یک روزه برای ایلام</a></li>
+<li><a href="./about.html#shipping">ارسال دو تا شش روزه در کل کشور</a></li>
+<li><a href="./about.html#returns">هفت روز ضمانت برگشت کالا</a></li>
+<li><a href="./about.html#installment">خرید اقساطی از روما</a></li>
+<li><a href="./about.html#after-sales">خدمات پس از فروش</a></li>
+</ul>
+</div>
+        <div class="col col-3">
+          <h3>پرفروش‌ترین برندها</h3>
+          <ul>
+            <li><a href="./products.htm?brand=%D9%86%D8%A7%D9%88%DB%8C%20%D9%81%D9%88%D8%B1%D8%B3">ناوی فورس</a></li>
+            <li><a href="./products.htm?brand=%D9%BE%D8%AA%DA%A9%20%D9%81%DB%8C%D9%84%DB%8C%D9%BE">پتک فیلیپ</a></li>
+            <li><a href="./products.htm?brand=%D8%B1%D9%88%D9%84%DA%A9%D8%B3">رولکس</a></li>
+            <li><a href="./products.htm?brand=%D8%A7%D8%AF%D9%85%D8%A7%D8%B1%D8%B3%20%D9%BE%DB%8C%DA%AF%D9%87">ادمارس پیگه</a></li>
+            <li><a href="./products.htm?brand=%D9%88%D8%A7%D8%AA%D8%B3%D9%88%D9%86">واتسون</a></li>
+          </ul>
+        </div>
+        <div class="col col-4">
+          <h3>ترتیب و دسته‌بندی قیمت</h3>
+          <ul>
+            <li><a href="./products.htm?sort=asc">ارزان‌ترین به گران‌ترین</a></li>
+            <li><a href="./products.htm?sort=desc">گران‌ترین به ارزان‌ترین</a></li>
+            <li><a href="./products.htm?gender=%D8%B3%D8%AA">ساعت‌های ست</a></li>
+            <li><a href="./products.htm?style=%D9%84%D9%88%DA%A9%D8%B3">ساعت‌های لوکس</a></li>
+            <li><a href="./products.htm?style=%DA%A9%D9%84%D8%A7%D8%B3%DB%8C%DA%A9">ساعت‌های کلاسیک</a></li>
+          </ul>
+        </div>
+<div class="col col-5">
+<div class="logo">roma watch</div>
+<div class="medias-icon">
+<i class="bi bi-instagram"></i>
+<i class="bi bi-telegram"></i>
+</div>
+</div>
+</div>
+<div class="developer-address">
+<p>تیم طراحی </p>
+<div class="link-to-developer">
+<a href="https://instagram.com/taha_dabiri21">
+<p>taha_dabiri21</p>
+<i class="bi bi-instagram"></i>
+</a>
+</div>
+</div>
+</footer><script src="./api.js"></script><script src="./products-data.js"></script>
+      <script src="./script.js"></script><script src="./ui.js"></script><script src="./search.js"></script><script src="./theme.js"></script></body></html>

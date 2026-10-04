@@ -1,0 +1,354 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Vazirmatn;
+}
+
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("./vazir-font-v16.1.0/Vazir-Light.woff2");
+  format: ("woff2");
+}
+
+:root {
+  --dark-Background: #040114;
+  --dark-main: #31096c;
+  --dark-buttons: #5713be;
+  --dark-action: #5713be;
+  --dark-text: #ffffff;
+  --light-background: #f5f7ff;
+  --light-main: #ffffff;
+  --light-buttons: #7830e4;
+  --light-text: #1a1953;
+  --light-action: #5713be;
+  --background-2: #31096ca3;
+}
+
+body {
+  direction: rtl;
+  font-family: sans-serif;
+  background: var(--dark-Background);
+  background-image: url("./images/website-background.png");
+  
+}
+
+.all-products-container {
+  width: 100%;
+  margin: 130px auto 10px auto;
+  height: 150vh;
+  padding: 20px;
+}
+
+.all-products-container h1 {
+  color: var(--dark-text);
+  /* margin-top: 50px; */
+  padding-right: 20px;
+}
+
+.all-products-container h1 i {
+  color: var(--dark-buttons);
+}
+
+.products-page {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 10px;
+}
+
+
+.filter-box label span {
+  color: #666666;
+  font-weight: 200;
+}
+
+.show-more {
+  margin-top: 18px;
+  text-align: start;
+  background-color: var(--dark-main);
+  width: 50%;
+  padding: 7px;
+  border-radius: 10px;
+  border: none;
+  color: var(--dark-text);
+  font-size: 0.7rem;
+  font-weight: 500;
+  transition: 0.2s;
+  text-align: center;
+  border: 2px solid var(--background-2);
+}
+
+.show-more:hover {
+  border: 2px solid var(--dark-buttons);
+  color: var(--dark-text);
+  transform: translateY(-3px);
+}
+
+.filter-box #search-brand {
+  background-color: transparent;
+  border: 1px solid var(--dark-action);
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px;
+  color: var(--dark-text);
+  margin-bottom: 10px;
+}
+
+.products {
+  width: 85%;
+  height: auto;
+  padding: 10px;
+  display: block;
+  box-sizing: border-box;
+}
+
+/* نوار تعداد محصولات و حذف فیلترها همیشه بالای کارت‌ها */
+.products-toolbar {
+  width: 100%;
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin: 0 0 18px 0;
+  padding: 8px 12px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  position: relative;
+  z-index: 10;
+}
+
+.products-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  align-items: start;
+}
+
+.products-grid .product-card {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.products::-webkit-scrollbar {
+  width: 0;
+}
+
+.product-card {
+  text-align: center;
+  width: 220px;
+  height: 350px;
+}
+
+.product-card .image {
+  width: 100px;
+  margin: 0 auto;
+}
+
+.product-card .image img {
+  width: 100%;
+}
+
+.product-card .name {
+  color: var(--dark-text);
+  font-weight: 700;
+}
+
+.product-card .model {
+  font-size: 14px;
+}
+
+.product-card .price .current-price {
+  font-size: 18px;
+  margin: 10px;
+}
+
+.product-card .price .old-price {
+  margin-top: 0;
+  font-size: 1rem;
+}
+
+.add-to-cart-btn {
+  background-color: #5713be;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 10px;
+  transition: 0.2s;
+  font-weight: 700;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #ffffff;
+  color: var(--dark-action);
+}
+
+.tob-bar-products-page {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* border-bottom: 2px solid var(--background-2); */
+  padding: 15px 30px;
+  height: 60px;
+  margin: 0px auto;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  transition: 0.3s;
+}
+
+/* ======================================================
+   DYNAMIC PRODUCTS / FILTER SYSTEM
+   ====================================================== */
+
+.product-count {
+  color: var(--dark-text);
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+#resetFilters {
+  border: 1px solid var(--dark-buttons);
+  background: transparent;
+  color: var(--dark-text);
+  border-radius: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: 0.2s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+#resetFilters:hover {
+  background: var(--dark-buttons);
+}
+
+.sort-select {
+  border: 1px solid var(--dark-buttons);
+  background: transparent;
+  color: var(--dark-text);
+  border-radius: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: 0.2s;
+  font-family: inherit;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.sort-select:hover {
+  background: var(--dark-buttons);
+}
+
+.sort-select option {
+  background: #1a1a2e;
+  color: var(--dark-text);
+}
+
+.no-products {
+  grid-column: 1 / -1;
+  width: 100%;
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--dark-text);
+  text-align: center;
+}
+
+.no-products small {
+  color: #999;
+  margin-top: 10px;
+}
+
+/* ======================================================
+   فیلترهای بیشتر - باز و بسته شدن نرم
+   ====================================================== */
+
+.filter-sidebar .filter-box label.extra {
+  display: flex;
+  max-height: 42px;
+  overflow: hidden;
+  opacity: 1;
+  transform: translateY(0);
+  margin-top: 0;
+  transition:
+    max-height 0.35s ease,
+    opacity 0.25s ease,
+    transform 0.35s ease,
+    margin 0.35s ease;
+}
+
+.filter-sidebar .filter-box:not(.active) label.extra {
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-8px);
+  margin-top: -10px;
+  pointer-events: none;
+}
+
+.filter-sidebar .show-more i {
+  display: inline-block;
+  transition: transform 0.35s ease;
+}
+
+.filter-sidebar .show-more.is-open i {
+  transform: rotate(180deg);
+}
+
+.filter-sidebar .show-more {
+  cursor: pointer;
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.filter-sidebar .show-more:active {
+  transform: scale(0.97);
+}
+
+/* ======================================================
+   سایدبار فیلتر مستقل از لیست محصولات
+   ====================================================== */
+
+.products-page {
+  align-items: flex-start;
+}
+
+.products {
+  min-width: 0;
+  overflow: visible;
+}
+
+/* Final product card containment */
+.products-grid .product-card { height: auto; min-height: 360px; overflow: hidden; }
+.products-grid .product-card .add-to-cart-btn { width: 100%; max-width: 100%; box-sizing: border-box; margin-left: 0; margin-right: 0; }
+
+/* ======================================================
+   ROMA WATCH - RESPONSIVE OVERRIDES
+   ====================================================== */
+@media (max-width: 1024px) {
+  .products { width: 68%; }
+  .products-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 860px) {
+  .all-products-container { margin-top: 175px; height: auto; padding: 15px; }
+  .products-page {
+    flex-direction: column;
+  }
+  .products { width: 100%; padding: 0; }
+  .products-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .products-toolbar { flex-wrap: wrap; }
+}
+
+@media (max-width: 480px) {
+  .products-grid { grid-template-columns: 1fr; }
+  .product-card { width: 100%; }
+}
